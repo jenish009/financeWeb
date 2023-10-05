@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Finance Blog</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #f2f2f2;
+                padding: 20px;
+                margin: 0 auto;
+            }
+
+            header {
+                background-image: url('https://upload.wikimedia.org/wikipedia/commons/8/81/Toronto_Entertainment_and_Financial_Districts_WV_banner.jpg');
+                background-size: cover;
+                background-position: center;
+                color: #fff;
+                padding: 20px;
+                text-align: center;
+            }
+
+            .header-content {
+                background-color: rgba(0, 0, 0, 0.6);
+                padding: 20px;
+            }
+
+            .header-content h1 {
+                font-size: 36px;
+                margin: 0;
+            }
+
+            .header-content p {
+                font-size: 18px;
+                margin: 10px 0;
+            }
+
+            footer {
+                background-color: #000;
+                padding: 20px;
+                text-align: center;
+                color: #fff;
+                margin-top: auto;
+                position: sticky;
+                position: -webkit-sticky;
+                bottom: 0;
+                z-index: 2;
+            }
+
+
+            main {
+                background-color: #fff;
+                padding: 20px;
+                border-radius: 5px;
+                box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            }
+
+            main h1 {
+                font-size: 28px;
+                color: #333;
+                margin-bottom: 20px;
+                text-align: center;
+            }
+
+            main h2 {
+                font-size: 24px;
+                color: #007bff;
+                margin-top: 20px;
+            }
+
+            main p {
+                font-size: 18px;
+                color: #444;
+                margin-bottom: 20px;
+                line-height: 1.5;
+            }
+
+            main h2+p {
+                margin-top: 10px;
+            }
+
+            img {
+                border: 1px solid #ccc;
+                max-width: 100%;
+                display: block;
+                margin: 0 auto;
+            }
+
+            ol {
+                list-style-type: decimal;
+                margin-left: 20px;
+            }
+
+            li {
+                margin-bottom: 10px;
+            }
+
+            .container {
+                max-width: 800px;
+                margin: 0 auto;
+                text-align: center;
+                padding: 20px;
+                font-family: "Helvetica Neue", sans-serif;
+            }
+
+            .countdown-text {
+                font-size: 18px;
+                border-radius: 10px;
+                font-family: Georgia, 'Times New Roman', Times, serif;
+                padding: 20px;
+                color: #01070d;
+                margin-bottom: 10px;
+                transition: background-color 0.3s, color 0.3s;
+                background-color: #e1913d;
+            }
+
+
+            .scroll-label {
+                border-radius: 10px;
+                display: none;
+                font-size: 18px;
+                font-family: Georgia, 'Times New Roman', Times, serif;
+                padding: 20px;
+                color: #01070d;
+                margin-bottom: 10px;
+                transition: background-color 0.3s, color 0.3s;
+                background-color: #7b77fa;
+            }
+
+            .continue-button {
+                border-radius: 10px;
+                background-color: #007bff;
+                color: #fff;
+                padding: 10px 20px;
+                border: none;
+                cursor: pointer;
+                display: block;
+                position: relative;
+                bottom: 55px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 200px;
+                z-index: 1;
+                font-size: 20px;
+                font-family: Georgia, 'Times New Roman', Times, serif;
+            }
+
+
+            /* Responsive CSS */
+            @media (max-width: 768px) {
+                .container {
+                    padding: 10px;
+                }
+
+                .countdown-text {
+                    font-size: 18px;
+                    padding: 10px;
+                }
+
+                .scroll-label {
+                    font-size: 14px;
+                    border-radius: 10px;
+                    display: none;
+                    font-size: 18px;
+                    font-family: Georgia, 'Times New Roman', Times, serif;
+                    padding: 5px;
+                    color: #01070d;
+                    margin-bottom: 10px;
+                    transition: background-color 0.3s, color 0.3s;
+                    background-color: #7b77fa;
+                }
+
+                .blog {
+                    flex: 0 1 calc(100% - 30px);
+                    max-width: calc(100% - 40px);
+                    margin: 5px;
+                }
+            }
+        </style>
+    </head>
+
+    <body>
+        <header>
+            <div class="header-content">
+                <h1>Welcome to Finance Blog</h1>
+                <p>Invest in Knowledge, Invest in You</p>
+            </div>
+        </header>
+
+        <div class="container">
+            <div class="countdown-text" id="countdown-text">Please wait for <span id="countdown">15</span> seconds</div>
+            <div class="scroll-label" id="scroll-label">Scroll Down And Click On "Continue" Button</div>
+        </div>
+
+        <main>
+            <article>
+                <div class="container">
+                    <h1>Building a Compelling Financial Model for Your Startup</h1>
+                    <p>Building a startup is a challenging journey that involves innovation, passion, and a solid plan.
+                        One
+                        crucial component of this plan that can make or break your startup's success is the financial
+                        model.
+                        A well-crafted financial model not only helps you navigate your startup's financial landscape
+                        but
+                        also plays a significant role in attracting potential investors. In this article, we will
+                        explore
+                        the key steps to build a compelling financial model that grabs investor interest.</p>
+
+                    <h2>1. Understand Your Business Model</h2>
+                    <p>Before diving into financial projections, it's essential to have a deep understanding of your
+                        business model. Clearly define your product or service, target market, pricing strategy, and
+                        revenue
+                        streams. Investors want to see that you have a clear and viable path to profitability.</p>
+
+                    <h2>2. Market Research</h2>
+                    <p>Conduct thorough market research to gather data on your industry, competitors, and market trends.
+                        This information will help you make realistic assumptions about market size, growth rates, and
+                        customer acquisition costs in your financial model.</p>
+
+                    <h2>3. Financial Statements</h2>
+                    <p>Your financial model should include three main financial statements: the income statement,
+                        balance
+                        sheet, and cash flow statement. These statements provide a comprehensive view of your startup's
+                        financial health. Ensure they are well-structured and easy to understand.</p>
+
+                    <h2>4. Revenue Projections</h2>
+                    <p>Clearly outline your revenue projections, including the sources of revenue and the timeline for
+                        achieving them. Be conservative in your estimates to avoid overhyping potential returns.</p>
+
+                    <h2>5. Expenses</h2>
+                    <p>Detail all your startup's expenses, including fixed and variable costs. Investors want to see
+                        that
+                        you have a realistic grasp of your financial obligations. Pay attention to operating expenses,
+                        marketing costs, and employee salaries.</p>
+
+                    <h2>6. Cash Flow Management</h2>
+                    <p>A startup's cash flow can be a make-or-break factor. Show how you plan to manage your cash flow
+                        effectively, especially during early-stage growth when expenses may outweigh revenue.</p>
+
+                    <h2>7. Sensitivity Analysis</h2>
+                    <p>Investors appreciate it when you acknowledge the uncertainties and risks associated with your
+                        financial projections. Perform sensitivity analysis to demonstrate how changes in key
+                        assumptions
+                        can impact your financial outcomes.</p>
+
+                    <h2>8. Funding Requirements</h2>
+                    <p>Be transparent about your funding requirements. Clearly state how much capital you need, what it
+                        will
+                        be used for, and when you expect to secure it. Investors want to know that you have a
+                        well-thought-out funding strategy.</p>
+
+                    <h2>9. Exit Strategy</h2>
+                    <p>Discuss your exit strategy with potential investors. Whether it's an acquisition or an initial
+                        public
+                        offering (IPO), investors want to see that you have a plan for them to eventually realize
+                        returns on
+                        their investment.</p>
+
+                    <h2>10. Professional Help</h2>
+                    <p>If you're not confident in your financial modeling skills, consider seeking help from financial
+                        experts or using specialized software. A well-structured financial model can make a significant
+                        difference in attracting investors.</p>
+
+                    <h2>11. Presentation</h2>
+                    <p>When presenting your financial model to investors, make it visually appealing and easy to follow.
+                        Use
+                        graphs, charts, and concise explanations to highlight key points. Be prepared to answer
+                        questions
+                        and defend your assumptions.</p>
+
+                    <h2>12. Transparency and Honesty</h2>
+                    <p>Building trust with investors is crucial. Be honest about your startup's challenges and potential
+                        pitfalls. Transparency can build credibility and show that you're a responsible entrepreneur.
+                    </p>
+
+                    <h2>13. Iterate and Update</h2>
+                    <p>Your financial model is not set in stone. It should evolve as your startup grows and as market
+                        conditions change. Continuously update your financial projections to reflect the most current
+                        information.</p>
+
+                    <p>In conclusion, building a compelling financial model for your startup is a critical step in
+                        attracting investor interest. It requires a deep understanding of your business, realistic
+                        projections, transparency, and the ability to adapt as circumstances change. Remember that
+                        investors
+                        are not just looking at numbers; they are evaluating your ability to manage finances and steer
+                        the
+                        ship toward profitability. A well-crafted financial model can set the stage for a successful
+                        partnership with investors and help your startup thrive in a competitive market.</p>
+                </div>
+            </article>
+        </main>
+
+        <a href="redirectFourth.html?token=" id="continue-link">
+            <button class="continue-button" id="continue-button">Continue</button>
+        </a>
+        <script>
+            function getTokenFromURL() {
+                const urlParams = new URLSearchParams(window.location.search);
+                return urlParams.get('token');
+            }
+
+            function handleContinueButtonClick() {
+                const token = getTokenFromURL();
+                if (token) {
+                    // Get the current URL
+                    const currentURL = window.location.href;
+
+                    // Append the token to the URL
+                    const updatedURL = `redirectFourth.html?token=${token}`;
+
+                    // Update the "Continue" button's parent anchor's href attribute
+                    const continueLink = document.getElementById('continue-link');
+                    continueLink.href = updatedURL;
+                }
+            };
+            window.addEventListener('load', () => {
+                // Your existing countdown reset code
+                resetCountdown();
+
+                // Add a click event listener to the "Continue" button
+                const continueButton = document.getElementById('continue-button');
+                continueButton.addEventListener('click', handleContinueButtonClick);
+            });
+            // Function to reset the countdown and show the "Continue" button after 15 seconds
+            function resetCountdown() {
+                let countdownValue = 1;
+                const countdownElement = document.getElementById('countdown');
+                const countdownTextElement = document.getElementById('countdown-text');
+                const scrollLabel = document.getElementById('scroll-label');
+                const continueButton = document.getElementById('continue-button');
+
+                // Initially hide the "Continue" button
+                continueButton.style.display = 'none';
+
+                const countdownInterval = setInterval(() => {
+                    countdownValue--;
+                    countdownElement.innerText = countdownValue;
+                    countdownTextElement.innerText = `Please wait for ${countdownValue} seconds`;
+
+                    if (countdownValue === 0) {
+                        clearInterval(countdownInterval);
+                        countdownTextElement.style.display = 'none';
+                        scrollLabel.style.display = 'block';
+
+                        // Show continue button after 15 seconds
+                        setTimeout(() => {
+                            continueButton.style.display = 'block';
+                        }, 0); // Change the delay to 0 to make it immediately visible
+                    }
+                }, 1000);
+            }
+
+            // Reset the countdown and show/hide the "Continue" button on page load
+            window.addEventListener('load', resetCountdown);
+        </script>
+        <footer>
+            &copy; 2023 Finance Blog
+        </footer>
+    </body>
+
+</html>

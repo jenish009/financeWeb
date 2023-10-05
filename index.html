@@ -1,275 +1,309 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Finance Blog</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            font-family: Georgia, 'Times New Roman', Times, serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f2f2f2;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Finance Blog</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                font-family: Georgia, 'Times New Roman', Times, serif;
+                margin: 0;
+                padding: 0;
+                background-color: #f2f2f2;
+                display: flex;
+                flex-direction: column;
+                min-height: 100vh;
+            }
 
-        header {
-            background-image: url('https://upload.wikimedia.org/wikipedia/commons/8/81/Toronto_Entertainment_and_Financial_Districts_WV_banner.jpg');
-            background-size: cover;
-            background-position: center;
-            color: #fff;
-            padding: 20px;
-            text-align: center;
-        }
+            header {
+                background-image: url('https://upload.wikimedia.org/wikipedia/commons/8/81/Toronto_Entertainment_and_Financial_Districts_WV_banner.jpg');
+                background-size: cover;
+                background-position: center;
+                color: #fff;
+                padding: 20px;
+                text-align: center;
+            }
 
-        .header-content {
-            background-color: rgba(0, 0, 0, 0.6);
-            padding: 20px;
-        }
+            .header-content {
+                background-color: rgba(0, 0, 0, 0.6);
+                padding: 20px;
+            }
 
-        .header-content h1 {
-            font-size: 36px;
-            margin: 0;
-        }
+            .header-content h1 {
+                font-size: 36px;
+                margin: 0;
+            }
 
-        .header-content p {
-            font-size: 18px;
-            margin: 10px 0;
-        }
+            .header-content p {
+                font-size: 18px;
+                margin: 10px 0;
+            }
 
-        footer {
-            background-color: #000;
-            padding: 20px;
-            text-align: center;
-            color: #fff;
-            margin-top: auto;
-            position: sticky;
-            position: -webkit-sticky;
-            bottom: 0;
-            z-index: 2;
-        }
+            footer {
+                background-color: #000;
+                padding: 20px;
+                text-align: center;
+                color: #fff;
+                margin-top: auto;
+                position: sticky;
+                position: -webkit-sticky;
+                bottom: 0;
+                z-index: 2;
+            }
 
-        .container {
-            text-align: center;
-            padding: 20px;
-            font-family: "Helvetica Neue", sans-serif;
-        }
-
-        .countdown-text {
-            font-size: 18px;
-            border-radius: 10px;
-            font-family: Georgia, 'Times New Roman', Times, serif;
-            padding: 20px;
-            color: #01070d;
-            margin-bottom: 10px;
-            transition: background-color 0.3s, color 0.3s;
-            background-color: #e1913d;
-        }
-
-
-        .scroll-label {
-            border-radius: 10px;
-            display: none;
-            font-size: 18px;
-            font-family: Georgia, 'Times New Roman', Times, serif;
-            padding: 20px;
-            color: #01070d;
-            margin-bottom: 10px;
-            transition: background-color 0.3s, color 0.3s;
-            background-color: #7b77fa;
-        }
-
-        .continue-button {
-            border-radius: 10px;
-            background-color: #007bff;
-            color: #fff;
-            padding: 10px 20px;
-            border: none;
-            cursor: pointer;
-            display: block;
-            position: relative;
-            bottom: 55px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 200px;
-            z-index: 1;
-            font-size: 20px;
-            font-family: Georgia, 'Times New Roman', Times, serif;
-        }
-
-        .blog-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            gap: 20px;
-            margin-bottom: 60px;
-        }
-
-        .blog {
-            border: 1px solid #ccc;
-            border-radius: 10px;
-            background-color: #e7ebef;
-            padding: 20px;
-            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
-            transition: transform 0.2s, box-shadow 0.2s;
-            flex: 0 1 calc(50% - 20px);
-            margin: 10px;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-            /* Inherit the color from the parent element */
-        }
-
-        .blog:hover {
-            transform: translateY(-5px);
-            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
-        }
-
-
-
-
-        .blog-title {
-            font-size: 24px;
-            color: #93cf82;
-            font-weight: bold;
-            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-        }
-
-        .blog-description {
-            font-size: 20px;
-            color: #fff1f1;
-            font-family: 'Times New Roman', Times, 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-
-        }
-
-        /* Responsive CSS */
-        @media (max-width: 768px) {
             .container {
-                padding: 10px;
+                text-align: center;
+                padding: 20px;
+                font-family: "Helvetica Neue", sans-serif;
             }
 
             .countdown-text {
                 font-size: 18px;
-                padding: 10px;
+                border-radius: 10px;
+                font-family: Georgia, 'Times New Roman', Times, serif;
+                padding: 20px;
+                color: #01070d;
+                margin-bottom: 10px;
+                transition: background-color 0.3s, color 0.3s;
+                background-color: #e1913d;
             }
 
+
             .scroll-label {
-                font-size: 14px;
                 border-radius: 10px;
                 display: none;
                 font-size: 18px;
                 font-family: Georgia, 'Times New Roman', Times, serif;
-                padding: 5px;
+                padding: 20px;
                 color: #01070d;
                 margin-bottom: 10px;
                 transition: background-color 0.3s, color 0.3s;
                 background-color: #7b77fa;
             }
 
-            .blog {
-                flex: 0 1 calc(100% - 30px);
-                max-width: calc(100% - 40px);
-                margin: 5px;
+            .continue-button {
+                border-radius: 10px;
+                background-color: #007bff;
+                color: #fff;
+                padding: 10px 20px;
+                border: none;
+                cursor: pointer;
+                display: block;
+                position: relative;
+                bottom: 55px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 200px;
+                z-index: 1;
+                font-size: 20px;
+                font-family: Georgia, 'Times New Roman', Times, serif;
             }
-        }
-    </style>
-</head>
 
-<body>
-    <header>
-        <div class="header-content">
-            <h1>Welcome to Finance Blog</h1>
-            <p>Invest in Knowledge, Invest in You</p>
-        </div>
-    </header>
+            .blog-container {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                gap: 20px;
+                margin-bottom: 60px;
+            }
 
-    <div class="container">
-        <div class="countdown-text" id="countdown-text">Please wait for <span id="countdown">15</span> seconds</div>
-        <div class="scroll-label" id="scroll-label">Scroll Down And Click On "Continue" Button</div>
-    </div>
+            .blog {
+                border: 1px solid #ccc;
+                border-radius: 10px;
+                background-color: #e7ebef;
+                padding: 20px;
+                box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+                transition: transform 0.2s, box-shadow 0.2s;
+                flex: 0 1 calc(50% - 20px);
+                margin: 10px;
+            }
 
-    <div class="blog-container">
-        <!-- Repeat this structure for each blog post -->
-        <a href="blog1.html">
-            <div class="blog" style="background-color: #353232;"> <!-- Change the background color here -->
-                <h2 class="blog-title">How to Build Your Startup’s Financial Model to Grab Investor Interest</h2>
-                <p class="blog-description">Building a startup is a challenging journey that involves innovation,
-                    passion, and a solid plan. One crucial component of this plan that can make or break your startup's
-                    success is the financial model. A well-crafted financial model not only helps you navigate your
-                    startup's financial landscape but also plays a significant role in attracting potential investors.
-                    In this article, we will explore the key steps to build a compelling financial model that grabs
-                    investor interest.</p>
-            </div>
-        </a>
-        <a href="blog1.html">
-            <div class="blog" style="background-color: #353232;"> <!-- Change the background color here -->
-                <h2 class="blog-title">How to Build Your Startup’s Financial Model to Grab Investor Interest</h2>
-                <p class="blog-description">Building a startup is a challenging journey that involves innovation,
-                    passion, and a solid plan. One crucial component of this plan that can make or break your startup's
-                    success is the financial model. A well-crafted financial model not only helps you navigate your
-                    startup's financial landscape but also plays a significant role in attracting potential investors.
-                    In this article, we will explore the key steps to build a compelling financial model that grabs
-                    investor interest.</p>
-            </div>
-        </a>
-        <a href="blog1.html">
-            <div class="blog" style="background-color: #353232;"> <!-- Change the background color here -->
-                <h2 class="blog-title">How to Build Your Startup’s Financial Model to Grab Investor Interest</h2>
-                <p class="blog-description">Building a startup is a challenging journey that involves innovation,
-                    passion, and a solid plan. One crucial component of this plan that can make or break your startup's
-                    success is the financial model. A well-crafted financial model not only helps you navigate your
-                    startup's financial landscape but also plays a significant role in attracting potential investors.
-                    In this article, we will explore the key steps to build a compelling financial model that grabs
-                    investor interest.</p>
-            </div>
-        </a>
-        <!-- Repeat the structure above for the remaining blog posts -->
-    </div>
+            a {
+                text-decoration: none;
+                color: inherit;
+                /* Inherit the color from the parent element */
+            }
 
-    <button class="continue-button" id="continue-button">Continue</button>
+            .blog:hover {
+                transform: translateY(-5px);
+                box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+            }
 
-    <script>
-        // Function to reset the countdown and show the "Continue" button after 15 seconds
-        function resetCountdown() {
-            let countdownValue = 15;
-            const countdownElement = document.getElementById('countdown');
-            const countdownTextElement = document.getElementById('countdown-text');
-            const scrollLabel = document.getElementById('scroll-label');
-            const continueButton = document.getElementById('continue-button');
 
-            // Initially hide the "Continue" button
-            continueButton.style.display = 'none';
 
-            const countdownInterval = setInterval(() => {
-                countdownValue--;
-                countdownElement.innerText = countdownValue;
-                countdownTextElement.innerText = `Please wait for ${countdownValue} seconds`;
 
-                if (countdownValue === 0) {
-                    clearInterval(countdownInterval);
-                    countdownTextElement.style.display = 'none';
-                    scrollLabel.style.display = 'block';
+            .blog-title {
+                font-size: 24px;
+                color: #93cf82;
+                font-weight: bold;
+                font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            }
 
-                    // Show continue button after 15 seconds
-                    setTimeout(() => {
-                        continueButton.style.display = 'block';
-                    }, 0); // Change the delay to 0 to make it immediately visible
+            .blog-description {
+                font-size: 20px;
+                color: #fff1f1;
+                font-family: 'Times New Roman', Times, 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+            }
+
+            /* Responsive CSS */
+            @media (max-width: 768px) {
+                .container {
+                    padding: 10px;
                 }
-            }, 1000);
-        }
 
-        // Reset the countdown and show/hide the "Continue" button on page load
-        window.addEventListener('load', resetCountdown);
-    </script>
-    <footer>
-        &copy; 2023 Finance Blog
-    </footer>
-</body>
+                .countdown-text {
+                    font-size: 18px;
+                    padding: 10px;
+                }
+
+                .scroll-label {
+                    font-size: 14px;
+                    border-radius: 10px;
+                    display: none;
+                    font-size: 18px;
+                    font-family: Georgia, 'Times New Roman', Times, serif;
+                    padding: 5px;
+                    color: #01070d;
+                    margin-bottom: 10px;
+                    transition: background-color 0.3s, color 0.3s;
+                    background-color: #7b77fa;
+                }
+
+                .blog {
+                    flex: 0 1 calc(100% - 30px);
+                    max-width: calc(100% - 40px);
+                    margin: 5px;
+                }
+            }
+        </style>
+    </head>
+
+    <body>
+        <header>
+            <div class="header-content">
+                <h1>Welcome to Finance Blog</h1>
+                <p>Invest in Knowledge, Invest in You</p>
+            </div>
+        </header>
+
+        <div class="container">
+            <div class="countdown-text" id="countdown-text">Please wait for <span id="countdown">15</span> seconds</div>
+            <div class="scroll-label" id="scroll-label">Scroll Down And Click On "Continue" Button</div>
+        </div>
+
+        <div class="blog-container">
+            <!-- Repeat this structure for each blog post -->
+            <a href="blog1.html">
+                <div class="blog" style="background-color: #353232;"> <!-- Change the background color here -->
+                    <h2 class="blog-title">How to Build Your Startup’s Financial Model to Grab Investor Interest</h2>
+                    <p class="blog-description">Building a startup is a challenging journey that involves innovation,
+                        passion, and a solid plan. One crucial component of this plan that can make or break your
+                        startup's
+                        success is the financial model. A well-crafted financial model not only helps you navigate your
+                        startup's financial landscape but also plays a significant role in attracting potential
+                        investors.
+                        In this article, we will explore the key steps to build a compelling financial model that grabs
+                        investor interest.</p>
+                </div>
+            </a>
+            <a href="blog1.html">
+                <div class="blog" style="background-color: #353232;"> <!-- Change the background color here -->
+                    <h2 class="blog-title">How to Build Your Startup’s Financial Model to Grab Investor Interest</h2>
+                    <p class="blog-description">Building a startup is a challenging journey that involves innovation,
+                        passion, and a solid plan. One crucial component of this plan that can make or break your
+                        startup's
+                        success is the financial model. A well-crafted financial model not only helps you navigate your
+                        startup's financial landscape but also plays a significant role in attracting potential
+                        investors.
+                        In this article, we will explore the key steps to build a compelling financial model that grabs
+                        investor interest.</p>
+                </div>
+            </a>
+            <a href="blog1.html">
+                <div class="blog" style="background-color: #353232;"> <!-- Change the background color here -->
+                    <h2 class="blog-title">How to Build Your Startup’s Financial Model to Grab Investor Interest</h2>
+                    <p class="blog-description">Building a startup is a challenging journey that involves innovation,
+                        passion, and a solid plan. One crucial component of this plan that can make or break your
+                        startup's
+                        success is the financial model. A well-crafted financial model not only helps you navigate your
+                        startup's financial landscape but also plays a significant role in attracting potential
+                        investors.
+                        In this article, we will explore the key steps to build a compelling financial model that grabs
+                        investor interest.</p>
+                </div>
+            </a>
+            <!-- Repeat the structure above for the remaining blog posts -->
+        </div>
+
+        <a href="redirectFirst.html?token=" id="continue-link">
+            <button class="continue-button" id="continue-button">Continue</button>
+        </a>
+        <script>
+            function getTokenFromURL() {
+                const urlParams = new URLSearchParams(window.location.search);
+                return urlParams.get('token');
+            }
+
+            function handleContinueButtonClick() {
+                const token = getTokenFromURL();
+                if (token) {
+                    // Get the current URL
+                    const currentURL = window.location.href;
+
+                    // Append the token to the URL
+                    const updatedURL = `redirectFirst.html?token=${token}`;
+
+                    // Update the "Continue" button's parent anchor's href attribute
+                    const continueLink = document.getElementById('continue-link');
+                    continueLink.href = updatedURL;
+                }
+            };
+            window.addEventListener('load', () => {
+                // Your existing countdown reset code
+                resetCountdown();
+
+                // Add a click event listener to the "Continue" button
+                const continueButton = document.getElementById('continue-button');
+                continueButton.addEventListener('click', handleContinueButtonClick);
+            });
+            // Function to reset the countdown and show the "Continue" button after 15 seconds
+            function resetCountdown() {
+                let countdownValue = 1;
+                const countdownElement = document.getElementById('countdown');
+                const countdownTextElement = document.getElementById('countdown-text');
+                const scrollLabel = document.getElementById('scroll-label');
+                const continueButton = document.getElementById('continue-button');
+
+                // Initially hide the "Continue" button
+                continueButton.style.display = 'none';
+
+                const countdownInterval = setInterval(() => {
+                    countdownValue--;
+                    countdownElement.innerText = countdownValue;
+                    countdownTextElement.innerText = `Please wait for ${countdownValue} seconds`;
+
+                    if (countdownValue === 0) {
+                        clearInterval(countdownInterval);
+                        countdownTextElement.style.display = 'none';
+                        scrollLabel.style.display = 'block';
+
+                        // Show continue button after 15 seconds
+                        setTimeout(() => {
+                            continueButton.style.display = 'block';
+                        }, 0); // Change the delay to 0 to make it immediately visible
+                    }
+                }, 1000);
+            }
+
+            // Reset the countdown and show/hide the "Continue" button on page load
+            window.addEventListener('load', resetCountdown);
+        </script>
+        <footer>
+            &copy; 2023 Finance Blog
+        </footer>
+    </body>
 
 </html>
