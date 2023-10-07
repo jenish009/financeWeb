@@ -5,19 +5,23 @@ import EmptyList from '../../components/common/EmptyList';
 import './styles.css';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import { BeatLoader } from 'react-spinners'; // Import BeatLoader
 
 const Blog = () => {
   const { id } = useParams();
   const [blog, setBlog] = useState(null);
+  const [loading, setLoading] = useState(true); // Initialize loading as true
 
   useEffect(() => {
-    // Fetch data from the API when the component mounts
-    axios.get(`http://localhost:5000/post/getPostById?id=${id}`)
+    axios
+      .get(`${process.env.REACT_APP_BACKEND_URL}/post/getPostById?id=${id}`)
       .then((response) => {
         setBlog(response.data); // Update the state with the fetched data
+        setLoading(false); // Set loading to false when data is fetched
       })
       .catch((error) => {
         console.error('Error fetching data:', error);
+        setLoading(false); // Set loading to false on error
       });
   }, [id]);
 
@@ -26,7 +30,12 @@ const Blog = () => {
       <Link className='blog-goBack' to='/'>
         <span> &#8592;</span> <span>Go Back</span>
       </Link>
-      {blog ? (
+
+      {loading ? ( // Display loading indicator while loading is true
+        <div className='loading-container'>
+          <BeatLoader color={'#0f52ba'} loading={loading} size={20} />
+        </div>
+      ) : blog ? (
         <div className='blog-wrap'>
           <header>
             <p className='blog-date'>Published {blog.createdAt}</p>

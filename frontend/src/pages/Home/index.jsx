@@ -23,7 +23,7 @@ const Home = () => {
       setLoading(true);
 
       axios
-        .get(`http://localhost:5000/post/getPosts?searchFilter=${searchKey}&page=${currentPage}&limit=${blogsPerPage}`)
+        .get(`${process.env.REACT_APP_BACKEND_URL}/post/getPosts?searchFilter=${searchKey}&page=${currentPage}&limit=${blogsPerPage}`)
         .then((response) => {
           setBlogs(response.data.posts);
           setTotalPages(response.data.totalPages);
