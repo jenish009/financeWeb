@@ -1,6 +1,12 @@
+/* Common styles for blog container */
 .blog-wrap {
-  max-width: 700px;
+  max-width: 800px;
   margin: 0 auto;
+  text-align: center;
+  padding: 20px;
+  background-color: #f7f7f7;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
 .blog-goBack {
@@ -8,11 +14,14 @@
   font-size: 0.8rem;
   color: #a9a9a9;
   font-weight: 500;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   display: block;
 }
+
+/* Header styles */
 .blog-wrap header {
   text-align: center;
+  margin-bottom: 20px;
 }
 
 .blog-date {
@@ -21,18 +30,52 @@
   font-weight: 500;
 }
 
-.blog-wrap img {
-  width: 100%;
+/* Description and Content styles */
+.blog-desc,
+.blog-content {
+  font-size: 1.2rem;
+  color: #333;
+  line-height: 1.6; /* Adjust line height for better readability */
+  margin-top: 1.5rem;
+  padding: 20px;
+  background-color: #f9f9f9; /* Lighter background color */
+  border: 1px solid #ddd; /* Add a subtle border */
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
+/* Add a subtle box-shadow to make the content section pop */
+.blog-content {
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Image styles with improved alignment */
+.blog-wrap img {
+  max-width: 100%;
+  display: block; /* Remove any extra space below the image */
+  margin: 0 auto; /* Center the image */
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  margin-top: 1.5rem;
+}
+
+/* Blog subCategory styles */
 .blog-subCategory {
   display: flex;
   justify-content: center;
-}
-.blog-subCategory > div {
-  margin: 1rem;
-}
-.blog-desc {
-  padding: 1rem;
   margin-top: 1.5rem;
+}
+
+.blog-subCategory > div {
+  margin: 0 10px;
+}
+
+/* Author image styles */
+.author-logo {
+  width: 40px; /* Set the desired width */
+  height: 40px; /* Set the desired height */
+  border-radius: 50%; /* Make it a circular image */
+  object-fit: cover; /* Maintain aspect ratio and cover the entire container */
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2); /* Add shadow effect */
+  margin-top: 1rem; /* Adjust the margin as needed */
 }
