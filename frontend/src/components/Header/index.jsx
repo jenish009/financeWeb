@@ -20,7 +20,7 @@ const Header = () => {
       <div className='header-content'>
         {/* <h2>Financial Insights Hub</h2> */}
         <h1>
-          <span className="highlight">“</span> FinanceWise365.com <span className="highlight">”</span>
+          <span className="highlight">“</span> FinancialHub.info <span className="highlight">”</span>
         </h1>
         <p>
         Empowering Your Financial Journey<br />  with Expert Insights and Practical Tips.
