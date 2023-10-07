@@ -1,0 +1,61 @@
+
+.loading-container {
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    height: 100vh; /* 100% viewport height to cover the entire screen */
+    background-color: rgba(255, 255, 255, 0.8); /* Optional: add a semi-transparent background overlay */
+  }
+  
+  @keyframes loadingAnimation {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+
+
+
+
+
+/* Pagination container */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 20px; /* Add space between pagination and footer */
+}
+
+/* Pagination buttons */
+.pagination button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  margin: 0 5px;
+  cursor: pointer;
+  border-radius: 25px; /* Makes buttons round */
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* Active page button */
+.pagination button.active {
+  background-color: #0056b3;
+}
+
+/* Hover effect */
+.pagination button:hover {
+  background-color: #0056b3;
+  transform: scale(1.1); /* Enlarges button on hover */
+}
+
+/* Disabled page button */
+.pagination button:disabled {
+  background-color: #ddd;
+  color: #777;
+  cursor: not-allowed;
+}

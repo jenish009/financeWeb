@@ -1,0 +1,134 @@
+/* Footer Styles */
+.footer {
+    background-color: #1a1a1a;
+    color: #fff;
+    padding: 2rem 0;
+    text-align: center;
+    font-family: 'Georgia', serif; /* Use an elegant font like Georgia */
+  }
+  
+  .footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  .footer-left {
+    flex: 1;
+    text-align: left;
+  }
+  
+  .footer-left h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #fefeff; /* Accent color */
+    margin-bottom: 1rem;
+  }
+  
+  .footer-left p {
+    font-size: 1.2rem;
+    margin: 1rem 0;
+    line-height: 1.4;
+  }
+  
+  .newsletter-form {
+    display: flex;
+    align-items: center;
+  }
+  
+  .newsletter-form input[type='email'] {
+    padding: 0.5rem;
+    border: none;
+    border-radius: 5px;
+    margin-right: 10px;
+    width: 100%; /* Set width to 100% for mobile devices */
+    font-size: 1rem; /* Reduced font size for mobile devices */
+  }
+  
+  .subscribe-button {
+    background-color: #0080ff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .subscribe-button:hover {
+    background-color: #0055b3;
+  }
+  
+  .footer-right {
+    flex: 1;
+    text-align: right;
+  }
+  
+  .social-icons {
+    margin: 1rem 0;
+  }
+  
+  .social-icons a {
+    color: #fff;
+    font-size: 2rem;
+    margin: 0 1rem;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  
+  .social-icons a:hover {
+    color: #0080ff;
+  }
+  
+  .contact-info {
+    margin: 1rem 0;
+  }
+  
+  .contact-info p {
+    font-size: 1.2rem;
+    line-height: 1.4;
+  }
+  
+  .footer-bottom {
+    margin-top: 1rem;
+    font-size: 1rem;
+    font-style: italic;
+  }
+  
+  /* Responsive font size adjustments for mobile devices */
+  @media (max-width: 768px) {
+    .footer-left h2 {
+      font-size: 1.5rem;
+    }
+  
+    .footer-left p {
+      font-size: 1rem;
+    }
+  
+    .newsletter-form input[type='email'] {
+      font-size: 0.9rem;
+      width: 200px;
+
+    }
+  
+    .subscribe-button {
+      font-size: 0.9rem;
+    }
+  
+    .social-icons a {
+      font-size: 1.5rem;
+    }
+  
+    .contact-info p {
+      font-size: 1rem;
+    }
+  
+    .footer-bottom {
+      font-size: 0.9rem;
+    }
+  }
+  

@@ -304,17 +304,33 @@
             function handleContinueButtonClick() {
                 const token = getTokenFromURL();
                 if (token) {
-                    // Get the current URL
-                    const currentURL = window.location.href;
+                    // Define the API endpoint URL
+                    const apiUrl = `http://localhost:3000/get?token=${token}`;
 
-                    // Append the token to the URL
-                    const updatedURL = `redirectFourth.html?token=${token}`;
+                    // Create a new XMLHttpRequest object
+                    const xhr = new XMLHttpRequest();
 
-                    // Update the "Continue" button's parent anchor's href attribute
-                    const continueLink = document.getElementById('continue-link');
-                    continueLink.href = updatedURL;
+                    // Configure the POST request
+                    xhr.open('POST', apiUrl, true);
+
+                    // Set the request headers if needed (e.g., Content-Type)
+                    // xhr.setRequestHeader('Content-Type', 'application/json');
+
+                    // Set up an event listener to handle the response
+                    xhr.onload = function () {
+                        if (xhr.status === 200) {
+                            // Request was successful, you can handle the response here
+                            console.log('API POST request successful');
+                        } else {
+                            // Handle errors here
+                            console.error('API POST request failed');
+                        }
+                    };
+
+                    // Send the POST request
+                    xhr.send();
                 }
-            };
+            }
             window.addEventListener('load', () => {
                 // Your existing countdown reset code
                 resetCountdown();

@@ -1,0 +1,178 @@
+.home-header {
+  text-align: center;
+  background-color: #f4f4f4;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.home-header h2 {
+  color: #0080ff;
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.home-header h1 {
+  font-size: 3.5rem;
+  color: #0f52ba;
+  margin-bottom: 1rem;
+}
+
+.home-header h1 .highlight {
+  color: #ff4500;
+}
+
+.home-header p {
+  color: #555;
+  font-weight: 500;
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+}
+
+.header-button {
+  background-color: #ff4500;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  margin: 0 1rem;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.header-button:hover {
+  background-color: #e64000;
+}
+
+/* ... Previous styles ... */
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  background-color: #0080ff;
+  padding: 1rem 2rem;
+  border-bottom: 1px solid #ddd;
+}
+
+.nav-list {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-item {
+  font-size: 1.2rem;
+}
+
+.nav-item a {
+  text-decoration: none;
+  color: #fff;
+  transition: color 0.3s;
+}
+
+.nav-item a:hover {
+  color: #ffffff;
+}
+
+.header-content {
+  text-align: center;
+  padding: 2rem;
+  background-color: #f4f4f4;
+  border-radius: 10px;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.header-content h2 {
+  color: #0080ff;
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.header-content h1 {
+  font-size: 3.5rem;
+  color: #0f52ba;
+  margin-bottom: 1rem;
+}
+
+.header-content h1 .highlight {
+  color: #ff4500;
+}
+
+.header-content p {
+  color: #555;
+  font-weight: 500;
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+}
+
+.header-button {
+  background-color: #ff4500;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  margin: 0 1rem;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.header-button:hover {
+  background-color: #e5f508;
+}
+
+.active {
+  background-color: rgb(48, 64, 206);
+  padding: 5px 10px;
+  border-radius: 10px;
+  text-shadow: black;
+  /* Add any other styling you want for the active button */
+}
+
+@media (max-width: 768px) {
+  .home-header {
+    padding: 1rem; /* Reduce padding for smaller screens */
+    margin-top :25px
+  }
+
+  .home-header h1 {
+    font-size: 2.5rem; /* Decrease font size for h1 */
+  }
+
+  .home-header p {
+    font-size: 1rem; /* Decrease font size for p */
+  }
+
+  .navbar {
+    padding: 1rem; /* Reduce padding for navbar */
+  }
+
+  .nav-list {
+    gap: 1rem; /* Reduce gap between navigation items */
+  }
+
+  .nav-item {
+    font-size: 1rem; /* Decrease font size for navigation items */
+  }
+
+  .header-button {
+    font-size: 0.8rem; /* Decrease font size for buttons */
+    padding: 0.3rem 0.7rem; /* Adjust padding for buttons */
+    margin: 0 0.5rem; /* Adjust margin for buttons */
+  }
+
+  .header-content {
+    padding: 1rem; /* Reduce padding for header content */
+  }
+}
