@@ -23,6 +23,7 @@ const Blog = () => {
         console.error("Error fetching data:", error);
         setLoading(false);
       });
+    window.scrollTo(0, 0);
   }, [id]);
 
   return (
@@ -48,15 +49,39 @@ const Blog = () => {
               ))}
             </div>
           </header>
-          <img src={blog.cover} alt="cover" />
-          <p className="blog-desc">{blog.description}</p>
+          <img className="blog-thumbnail" src={blog.cover} alt="cover" />
+          <p className="blog-desc-p">{blog.description}</p>
 
-          {/* Content section */}
           <div className="blog-content">
-            <h3>Content:</h3>
-            <p>{blog.content}</p>
+            {Array.isArray(blog.content) &&
+              blog.content.map((item, index) => {
+                if (item.p) {
+                  return (
+                    <p key={index} className="blog-content-p">
+                      {item.p}
+                    </p>
+                  );
+                } else if (item.h2) {
+                  return (
+                    <h2 key={index} className="blog-content-h2">
+                      {item.h2}
+                    </h2>
+                  );
+                } else if (item.img) {
+                  return (
+                    <img
+                      key={index}
+                      src={item.img}
+                      className="blog-content-img"
+                      alt={`Content Image ${index}`}
+                    />
+                  );
+                } else {
+                  return null; // Handle other content types if needed
+                }
+              })}
 
-            {/* Author information */}
+            {/* Add the author info here */}
             <div className="author-info">
               <img
                 src={blog.authorAvatar}

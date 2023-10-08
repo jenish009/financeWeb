@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import EmptyList from '../../components/common/EmptyList';
-import BlogList from '../../components/Home/BlogList';
-import SearchBar from '../../components/Home/SearchBar';
-import axios from 'axios';
-import { BeatLoader } from 'react-spinners';
-import './styles.css';
+import React, { useState, useEffect } from "react";
+import EmptyList from "../../components/common/EmptyList";
+import BlogList from "../../components/Home/BlogList";
+import SearchBar from "../../components/Home/SearchBar";
+import axios from "axios";
+import { BeatLoader } from "react-spinners";
+import "./styles.css";
 
 const Home = () => {
   const [blogs, setBlogs] = useState([]);
-  const [searchKey, setSearchKey] = useState('');
+  const [searchKey, setSearchKey] = useState("");
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
@@ -23,14 +23,16 @@ const Home = () => {
       setLoading(true);
 
       axios
-        .get(`${process.env.REACT_APP_BACKEND_URL}/post/getPosts?searchFilter=${searchKey}&page=${currentPage}&limit=${blogsPerPage}`)
+        .get(
+          `${process.env.REACT_APP_BACKEND_URL}/post/getPosts?searchFilter=${searchKey}&page=${currentPage}&limit=${blogsPerPage}`
+        )
         .then((response) => {
           setBlogs(response.data.posts);
           setTotalPages(response.data.totalPages);
           setLoading(false); // Set loading to false here
         })
         .catch((error) => {
-          console.error('Error fetching data:', error);
+          console.error("Error fetching data:", error);
           setBlogs([]); // Initialize blogs as an empty array on error
           setLoading(false); // Set loading to false here
         });
@@ -44,6 +46,7 @@ const Home = () => {
     return () => {
       clearTimeout(debounceTimeout);
     };
+    window.scrollTo(0, 0);
   }, [searchKey, currentPage]);
 
   const handleSearchBar = () => {
@@ -51,7 +54,7 @@ const Home = () => {
   };
 
   const handleClearSearch = () => {
-    setSearchKey('');
+    setSearchKey("");
     setCurrentPage(1);
   };
 
@@ -62,7 +65,7 @@ const Home = () => {
     // Update the currentPage state immediately
     setLoading(true);
     setCurrentPage(newPage);
-    window.scrollTo(0, 0)
+    window.scrollTo(0, 0);
   };
 
   return (
@@ -76,7 +79,7 @@ const Home = () => {
 
       {loading ? (
         <div className="loading-container">
-          <BeatLoader color={'#0f52ba'} loading={loading} size={20} />
+          <BeatLoader color={"#0f52ba"} loading={loading} size={20} />
         </div>
       ) : (
         <>
@@ -88,7 +91,7 @@ const Home = () => {
               <button
                 key={index}
                 onClick={() => handlePageChange(index + 1)}
-                className={currentPage === index + 1 ? 'active' : ''}
+                className={currentPage === index + 1 ? "active" : ""}
               >
                 {index + 1}
               </button>

@@ -143,7 +143,7 @@
 @media (max-width: 768px) {
   .home-header {
     padding: 1rem; /* Reduce padding for smaller screens */
-    margin-top :25px
+    margin-top: -10px;
   }
 
   .home-header h1 {
