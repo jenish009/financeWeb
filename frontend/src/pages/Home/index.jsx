@@ -5,6 +5,7 @@ import SearchBar from "../../components/Home/SearchBar";
 import axios from "axios";
 import { BeatLoader } from "react-spinners";
 import "./styles.css";
+// import logo from "../../../public/assets/images/"; // Import your logo image
 
 const Home = () => {
   const [blogs, setBlogs] = useState([]);
@@ -70,6 +71,20 @@ const Home = () => {
 
   return (
     <div>
+      <div className="rount-button-navigationbar">
+        <div className="round-button">
+          <div className="round-button-img-container">
+            <img src="/assets/images/news.jpg" alt="Logo" className="logo" />
+          </div>
+          <div className="round-button-title">News</div>
+        </div>
+        <div className="round-button">
+          <div className="round-button-img-container">
+            <img src="/assets/images/blog.jpg" alt="Logo" className="logo" />
+          </div>
+          <div className="round-button-title">Blogs</div>
+        </div>
+      </div>
       <SearchBar
         value={searchKey}
         clearSearch={handleClearSearch}

@@ -1,25 +1,78 @@
-
 .loading-container {
-    display: flex;
-    justify-content: center;
-    /* align-items: center; */
-    height: 100vh; /* 100% viewport height to cover the entire screen */
-    background-color: rgba(255, 255, 255, 0.8); /* Optional: add a semi-transparent background overlay */
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+  height: 100vh; /* 100% viewport height to cover the entire screen */
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.8
+  ); /* Optional: add a semi-transparent background overlay */
+}
+
+@keyframes loadingAnimation {
+  0% {
+    transform: rotate(0deg);
   }
-  
-  @keyframes loadingAnimation {
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(360deg);
-    }
+  100% {
+    transform: rotate(360deg);
   }
-  
+}
+.round-button {
+  margin: 0 auto;
+  gap: 0px 100px;
+  display: flex;
+  flex-direction: column;
+  width: 90px;
+  height: 90px;
+  align-items: center;
+  position: relative; /* Add this for absolute positioning of the image */
+}
+.round-button-img-container:hover img {
+  transform: scale(1.1); /* Scale up the image on hover */
+  transition: transform 0.2s ease; /* Smooth transition effect */
+}
+.round-button-img-container:hover {
+  background-color: rgb(202, 202, 196);
+}
+.round-button-img-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff; /* Background color of the round button */
+  width: 65px; /* Adjust the width as needed */
+  height: 65px; /* Adjust the height as needed */
+  border-radius: 50%; /* Make it a round button */
+  top: 50px; /* Adjust the top position to place it between search bar and header */
+  right: 20px; /* Adjust the right position as needed */
+  z-index: 1;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); /* Add shadow effect */
+  text-align: center;
+}
+.rount-button-navigationbar {
+  display: flex;
+  background-color: #fdfdfd;
+  margin-top: 20px;
+  border-radius: 10px;
+  padding: 5px;
+  border-color: black;
+}
+.round-button-title {
+  font-size: 14px;
+  font-family: serif;
+  font-weight: bold; /* Adjust the font weight as needed */
+  text-transform: uppercase; /* Adjust the text transform as needed */
+  color: rgb(0, 0, 0);
+  margin-top: 5px;
+}
 
-
-
-
+.logo {
+  width: 50px; /* Adjust the logo width as needed */
+  height: 50px; /* Adjust the logo height as needed */
+  border-radius: 50%; /* Make it a round logo */
+}
 
 /* Pagination container */
 .pagination {
