@@ -5,50 +5,66 @@ import SearchBar from "../../components/Home/SearchBar";
 import axios from "axios";
 import { BeatLoader } from "react-spinners";
 import "./styles.css";
-// import logo from "../../../public/assets/images/"; // Import your logo image
+import LatestNews from "../../components/newsList/index";
 
 const Home = () => {
-  const [blogs, setBlogs] = useState([]);
+  const [data, setData] = useState({ news: [], blogs: [] });
   const [searchKey, setSearchKey] = useState("");
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
+  const [mode, setMode] = useState("news");
 
   const blogsPerPage = 9;
 
   useEffect(() => {
     let debounceTimeout;
-    setLoading(true);
+    let isMounted = true; // Flag to check if the component is still mounted
 
-    const fetchBlogs = () => {
+    const fetchData = () => {
       setLoading(true);
+
+      const apiUrl =
+        mode === "news"
+          ? `${process.env.REACT_APP_BACKEND_URL}/post/getNews`
+          : `${process.env.REACT_APP_BACKEND_URL}/post/getPosts`;
 
       axios
         .get(
-          `${process.env.REACT_APP_BACKEND_URL}/post/getPosts?searchFilter=${searchKey}&page=${currentPage}&limit=${blogsPerPage}`
+          `${apiUrl}?searchFilter=${searchKey}&page=${currentPage}&limit=${blogsPerPage}`
         )
         .then((response) => {
-          setBlogs(response.data.posts);
-          setTotalPages(response.data.totalPages);
-          setLoading(false); // Set loading to false here
+          if (isMounted) {
+            setData((prevData) => ({
+              ...prevData,
+              [mode]: response.data.posts,
+            }));
+            setTotalPages(response.data.totalPages);
+            setLoading(false);
+          }
         })
         .catch((error) => {
           console.error("Error fetching data:", error);
-          setBlogs([]); // Initialize blogs as an empty array on error
-          setLoading(false); // Set loading to false here
+          if (isMounted) {
+            setData((prevData) => ({ ...prevData, [mode]: [] }));
+            setLoading(false);
+          }
         });
     };
+
+    // Check if the component is still mounted before setting state
+    isMounted = true;
 
     if (debounceTimeout) {
       clearTimeout(debounceTimeout);
     }
-    debounceTimeout = setTimeout(fetchBlogs, 1000);
+    debounceTimeout = setTimeout(fetchData, 300); // Reduced debounce timeout
 
     return () => {
+      isMounted = false; // Clean up to prevent state updates on unmounted component
       clearTimeout(debounceTimeout);
     };
-    window.scrollTo(0, 0);
-  }, [searchKey, currentPage]);
+  }, [searchKey, currentPage, mode]);
 
   const handleSearchBar = () => {
     setCurrentPage(1);
@@ -60,34 +76,48 @@ const Home = () => {
   };
 
   const handlePageChange = (newPage) => {
-    if (newPage === currentPage) {
-      return; // Prevent API call if the page didn't change
+    if (newPage !== currentPage) {
+      setCurrentPage(newPage);
     }
-    // Update the currentPage state immediately
-    setLoading(true);
-    setCurrentPage(newPage);
-    window.scrollTo(0, 0);
+  };
+
+  const handleModeChange = (newMode) => {
+    if (newMode !== mode) {
+      setMode(newMode);
+      setCurrentPage(1); // Reset page when mode changes
+    }
   };
 
   return (
     <div>
-      <div className="rount-button-navigationbar">
-        <div className="round-button">
+      <div className="round-button-navigationbar">
+        <div
+          className={`round-button ${
+            mode === "news" ? "active-round-button" : ""
+          }`}
+          onClick={() => handleModeChange("news")}
+        >
           <div className="round-button-img-container">
-            <img src="/assets/images/news.jpg" alt="Logo" className="logo" />
+            <img src="/assets/images/news.jpg" alt="News" className="logo" />
           </div>
-          <div className="round-button-title">News</div>
         </div>
-        <div className="round-button">
+        <div
+          className={`round-button ${
+            mode === "blogs" ? "active-round-button" : ""
+          }`}
+          onClick={() => handleModeChange("blogs")}
+        >
           <div className="round-button-img-container">
-            <img src="/assets/images/blog.jpg" alt="Logo" className="logo" />
+            <img src="/assets/images/blog.jpg" alt="Blogs" className="logo" />
           </div>
-          <div className="round-button-title">Blogs</div>
         </div>
       </div>
       <SearchBar
         value={searchKey}
-        clearSearch={handleClearSearch}
+        clearSearch={() => {
+          setSearchKey("");
+          setCurrentPage(1);
+        }}
         formSubmit={handleSearchBar}
         handleSearchKey={(e) => setSearchKey(e.target.value)}
       />
@@ -98,15 +128,21 @@ const Home = () => {
         </div>
       ) : (
         <>
-          <BlogList blogs={blogs} />
-          {blogs.length === 0 && <EmptyList />}
-
+          {data[mode].length === 0 ? (
+            <EmptyList />
+          ) : mode === "news" ? (
+            <LatestNews />
+          ) : (
+            <BlogList blogs={data[mode]} />
+          )}
           <div className="pagination">
             {Array.from({ length: totalPages }, (_, index) => (
               <button
                 key={index}
                 onClick={() => handlePageChange(index + 1)}
-                className={currentPage === index + 1 ? "active" : ""}
+                className={
+                  currentPage === index + 1 ? "active-round-button" : ""
+                }
               >
                 {index + 1}
               </button>

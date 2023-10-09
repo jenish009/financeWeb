@@ -76,8 +76,12 @@ const Blog = () => {
                       alt={`Content Image ${index}`}
                     />
                   );
-                } else {
-                  return null; // Handle other content types if needed
+                } else if (item.h3) {
+                  return (
+                    <h3 key={index} className="blog-content-h3">
+                      {item.h3}
+                    </h3>
+                  ); // Handle other content types if needed
                 }
               })}
 

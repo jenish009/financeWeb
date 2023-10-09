@@ -65,7 +65,13 @@
   margin-bottom: 1rem; /* Bottom margin for separation */
   font-weight: bold; /* Bold font weight, you can adjust as needed */
 }
-
+.blog-content-h3 {
+  font-size: 1.3rem; /* Adjust the font size to your preference */
+  color: #333; /* Text color */
+  margin-top: 1.3rem; /* Top margin to create spacing below previous content */
+  margin-bottom: 1rem; /* Bottom margin for separation */
+  font-weight: bold; /* Bold font weight, you can adjust as needed */
+}
 .blog-content-img {
   width: 70%;
   border-radius: 10px;
