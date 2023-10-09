@@ -102,3 +102,30 @@
   color: #777;
   cursor: not-allowed;
 }
+
+@media (max-width: 768px) {
+  /* Adjust styles for smaller screens here */
+
+  /* Example: Reduce the size of round buttons and pagination buttons */
+  .round-button {
+    width: 50px;
+    height: 50px;
+  }
+
+  .round-button-img-container {
+    width: 45px;
+    height: 45px;
+  }
+
+  .pagination button {
+    padding: 8px 12px;
+  }
+
+  .logo {
+    width: 40px;
+    height: 40px;
+  }
+  .round-button-img-container:hover {
+    background-color: rgb(255, 255, 255);
+  }
+}
