@@ -6,6 +6,7 @@ import axios from "axios";
 import { BeatLoader } from "react-spinners";
 import "./styles.css";
 import NewsList from "../../components/newsList/index";
+import { Helmet } from "react-helmet"; // Import Helmet for managing meta tags
 
 const Home = () => {
   const [data, setData] = useState({ news: [], blogs: [] });
@@ -19,7 +20,7 @@ const Home = () => {
 
   useEffect(() => {
     let debounceTimeout;
-    let isMounted = true; // Flag to check if the component is still mounted
+    let isMounted = true;
 
     const fetchData = () => {
       setLoading(true);
@@ -52,16 +53,15 @@ const Home = () => {
         });
     };
 
-    // Check if the component is still mounted before setting state
     isMounted = true;
 
     if (debounceTimeout) {
       clearTimeout(debounceTimeout);
     }
-    debounceTimeout = setTimeout(fetchData, 300); // Reduced debounce timeout
+    debounceTimeout = setTimeout(fetchData, 300);
 
     return () => {
-      isMounted = false; // Clean up to prevent state updates on unmounted component
+      isMounted = false;
       clearTimeout(debounceTimeout);
     };
   }, [searchKey, currentPage, mode]);
@@ -84,9 +84,10 @@ const Home = () => {
   const handleModeChange = (newMode) => {
     if (newMode !== mode) {
       setMode(newMode);
-      setCurrentPage(1); // Reset page when mode changes
+      setCurrentPage(1);
     }
   };
+
   let newsData = [
     {
       id: 1,
@@ -129,8 +130,28 @@ const Home = () => {
       image: "https://drive.google.com/uc?id=1M1qqGtcw2WIbXgimrR4-D_a1VKmGnA6Y",
     },
   ];
+
   return (
     <div>
+      <Helmet>
+        <title>
+          FinancialHub - Your Source for Financial News and Insights
+        </title>
+        <meta
+          name="description"
+          content="Stay informed on the latest financial news and trends with our daily blog. Get insights and advice from experts on investing, personal finance, and more. FinancialHub is your trusted source for financial information."
+        />
+        <meta
+          name="keywords"
+          content="finance, financial news, investing, personal finance, experts, blog"
+        />
+        <meta
+          property="og:title"
+          content="FinancialHub - Your Source for Financial News and Insights"
+        />
+        <meta property="og:image" content="%PUBLIC_URL%/author.jpg" />
+        <meta property="og:url" content="%PUBLIC_URL%" />
+      </Helmet>
       <div className="round-button-navigationbar">
         <div
           className={`round-button ${
@@ -169,7 +190,7 @@ const Home = () => {
         </div>
       ) : (
         <>
-          {data[mode].length === 0 && mode === "blog" ? (
+          {data[mode].length === 0 && mode === "blogs" ? (
             <EmptyList />
           ) : mode === "news" ? (
             <NewsList news={newsData} />

@@ -6,6 +6,7 @@ import "./styles.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { BeatLoader } from "react-spinners";
+import { Helmet } from "react-helmet"; // Import Helmet for managing meta tags
 
 const Blog = () => {
   const { id } = useParams();
@@ -28,16 +29,27 @@ const Blog = () => {
 
   return (
     <>
-      <Link className="blog-goBack" to="/">
-        <span> &#8592;</span> <span>Go Back</span>
-      </Link>
-
       {loading ? (
         <div className="loading-container">
           <BeatLoader color={"#0f52ba"} loading={loading} size={20} />
         </div>
       ) : blog ? (
         <div className="blog-wrap">
+          <Helmet>
+            <title>{blog.title}</title>
+            <meta name="description" content={blog.description} />
+            <meta
+              name="keywords"
+              content="finance, financial news, investing, personal finance, experts, blog"
+            />
+            <meta property="og:title" content={blog.title} />
+            <meta property="og:image" content="%PUBLIC_URL%/author.jpg" />
+            <meta property="og:url" content="%PUBLIC_URL%" />
+          </Helmet>
+          <Link className="blog-goBack" to="/">
+            <span> &#8592;</span> <span>Go Back</span>
+          </Link>
+
           <header>
             <p className="blog-date">Published {blog.createdAt}</p>
             <h1>{blog.title}</h1>
