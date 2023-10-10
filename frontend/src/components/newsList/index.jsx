@@ -1,37 +1,33 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+// NewsItem.js
+import React from "react";
+import { Link } from "react-router-dom";
+import "./styles.css"; // Updated CSS file name
 
-const LatestNews = () => {
-  const [latestNews, setLatestNews] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    axios
-      .get(`${process.env.REACT_APP_BACKEND_URL}/post/getLatestNews`)
-      .then((response) => {
-        setLatestNews(response.data.latestNews);
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.error("Error fetching latest news:", error);
-        setLoading(false);
-      });
-  }, []);
-
+const NewsItem = ({ news }) => {
   return (
-    <div className="latest-news">
-      <h2>Latest News</h2>
-      {loading ? (
-        <p>Loading latest news...</p>
-      ) : (
-        <ul>
-          {latestNews.map((newsItem) => (
-            <li key={newsItem.id}>{newsItem.title}</li>
-          ))}
-        </ul>
-      )}
+    <div className="news-container">
+      {news.map((newsObj, index) => (
+        <div key={index} className="newsItem">
+          <img
+            src={newsObj.image}
+            alt={newsObj.title}
+            className="newsItem-img" // Added class name
+          />
+          <div className="newsItem-content">
+            <h3 className="newsItem-title"> {newsObj.title}</h3>
+            <p className="newsItem-date">Published on: {newsObj.date}</p>
+            <p className="newsItem-description"> {newsObj.description}</p>
+            <Link
+              to={`/news/${news.id}`}
+              className="newsItem-link" // Added class name
+            >
+              Read more
+            </Link>
+          </div>
+        </div>
+      ))}
     </div>
   );
 };
 
-export default LatestNews;
+export default NewsItem;

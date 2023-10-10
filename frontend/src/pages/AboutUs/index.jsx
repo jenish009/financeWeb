@@ -1,21 +1,30 @@
 import React from "react";
 import "./AboutUs.css"; // Import the CSS for this page
+const originUrl = window.location.origin;
 
 const AboutUs = () => (
   <div className="about-us">
     <h1 className="page-titel-h1">About Us</h1>
     <p>
-      Welcome to financialHub.info - Your Trusted Source for Financial Insights
-      and Expertise!
+      Welcome to{" "}
+      <a href={originUrl}>
+        <strong>FinancialHub.info</strong>
+      </a>{" "}
+      - Your Trusted Source for Financial Insights and Expertise!
     </p>
 
     <h2>Who We Are</h2>
     <p>
-      At financialHub.info, we are dedicated to providing you with accurate,
-      reliable, and up-to-date information on all things related to finance,
-      investing, and personal finance. Our mission is to empower individuals
-      like you to make informed financial decisions, grow your wealth, and
-      achieve financial freedom.
+      At{" "}
+      <a href={originUrl}>
+        {" "}
+        <strong>FinancialHub.info</strong>
+      </a>{" "}
+      , we are dedicated to providing you with accurate, reliable, and
+      up-to-date information on all things related to finance, investing, and
+      personal finance. Our mission is to empower individuals like you to make
+      informed financial decisions, grow your wealth, and achieve financial
+      freedom.
     </p>
 
     <h2>What Sets Us Apart</h2>
@@ -91,9 +100,12 @@ const AboutUs = () => (
     </p>
 
     <p>
-      Thank you for choosing financialHub.info as your go-to resource for all
-      things finance. We look forward to being a part of your financial success
-      story.
+      Thank you for choosing{" "}
+      <a href={originUrl}>
+        <strong>FinancialHub.info</strong>
+      </a>{" "}
+      as your go-to resource for all things finance. We look forward to being a
+      part of your financial success story.
     </p>
   </div>
 );

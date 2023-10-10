@@ -1,0 +1,95 @@
+/* NewsItem.css */
+
+/* Common styles for all screen sizes */
+.news-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  gap: 20px;
+}
+
+.newsItem {
+  flex: 0 0 calc(25% - 20px);
+  position: relative;
+  overflow: hidden;
+  background-color: #fff;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  transition: transform 0.3s, box-shadow 0.3s;
+  margin-bottom: 20px;
+}
+
+.newsItem-img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px 8px 0 0;
+}
+
+.newsItem-content {
+  padding: 20px;
+  color: #000;
+}
+
+.newsItem-title {
+  font-size: 20px;
+  margin: 0;
+  margin-bottom: 10px;
+}
+
+.newsItem-date {
+  font-size: 14px;
+  color: #fff;
+  background-color: #a9aaad;
+  padding: 5px 10px;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  display: inline-block;
+  font-weight: 600;
+}
+
+.newsItem-description {
+  font-size: 16px;
+  color: #333;
+  margin: 0;
+}
+
+.newsItem-link {
+  display: block;
+  text-align: right;
+  text-decoration: none;
+  color: #007bff;
+  margin-top: 10px;
+}
+
+.newsItem-link:hover {
+  text-decoration: underline;
+}
+
+/* Responsive Styles for Mobile Devices */
+@media screen and (max-width: 768px) {
+  .newsItem {
+    flex: 0 0 calc(50% - 20px); /* Two items in one row for screens less than or equal to 768px */
+    margin-bottom: 0px;
+  }
+
+  .newsItem-content {
+    padding: 10px; /* Reduced padding for content */
+  }
+
+  .newsItem-title {
+    font-size: 15px; /* Smaller font size for titles on mobile */
+    margin-bottom: 5px; /* Reduced margin for title */
+  }
+
+  .newsItem-date {
+    font-size: 10px; /* Smaller font size for date on mobile */
+    margin-bottom: 5px; /* Reduced margin for date */
+    font-weight: 400;
+  }
+
+  .newsItem-description {
+    font-size: 12px;
+    line-height: 19px;
+  }
+}

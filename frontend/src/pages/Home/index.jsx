@@ -5,7 +5,7 @@ import SearchBar from "../../components/Home/SearchBar";
 import axios from "axios";
 import { BeatLoader } from "react-spinners";
 import "./styles.css";
-import LatestNews from "../../components/newsList/index";
+import NewsList from "../../components/newsList/index";
 
 const Home = () => {
   const [data, setData] = useState({ news: [], blogs: [] });
@@ -87,7 +87,48 @@ const Home = () => {
       setCurrentPage(1); // Reset page when mode changes
     }
   };
-
+  let newsData = [
+    {
+      id: 1,
+      title: "Breaking News 1",
+      date: "October 12, 2023",
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      image: "https://drive.google.com/uc?id=1M1qqGtcw2WIbXgimrR4-D_a1VKmGnA6Y",
+    },
+    {
+      id: 2,
+      title: "Latest Updates 2",
+      date: "October 11, 2023",
+      description:
+        "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      image: "https://drive.google.com/uc?id=1M1qqGtcw2WIbXgimrR4-D_a1VKmGnA6Y",
+    },
+    {
+      id: 3,
+      title: "In-depth Analysis 3",
+      date: "October 10, 2023",
+      description:
+        "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+      image: "https://drive.google.com/uc?id=1M1qqGtcw2WIbXgimrR4-D_a1VKmGnA6Y",
+    },
+    {
+      id: 2,
+      title: "Latest Updates 2",
+      date: "October 11, 2023",
+      description:
+        "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      image: "https://drive.google.com/uc?id=1M1qqGtcw2WIbXgimrR4-D_a1VKmGnA6Y",
+    },
+    {
+      id: 3,
+      title: "In-depth Analysis 3",
+      date: "October 10, 2023",
+      description:
+        "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+      image: "https://drive.google.com/uc?id=1M1qqGtcw2WIbXgimrR4-D_a1VKmGnA6Y",
+    },
+  ];
   return (
     <div>
       <div className="round-button-navigationbar">
@@ -128,10 +169,10 @@ const Home = () => {
         </div>
       ) : (
         <>
-          {data[mode].length === 0 ? (
+          {data[mode].length === 0 && mode === "blog" ? (
             <EmptyList />
           ) : mode === "news" ? (
-            <LatestNews />
+            <NewsList news={newsData} />
           ) : (
             <BlogList blogs={data[mode]} />
           )}
