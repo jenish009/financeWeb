@@ -32,7 +32,7 @@ const getAllNews = async (req, res) => {
             ],
         };
 
-        const news = await newsModel.find(query)
+        const news = await newsModel.find(query).sort({ _id: -1 })
             .skip(skip)
             .limit(limit)
             .exec();
