@@ -135,3 +135,49 @@
   font-size: 16px;
   font-weight: bold;
 }
+
+@media (max-width: 768px) {
+  /* Adjust styles for smaller screens (e.g., mobile phones) here */
+
+  /* Example: Reduce padding and font sizes for better mobile display */
+  .news-wrap {
+    padding: 10px; /* Adjust padding as needed */
+  }
+
+  .news-description,
+  .news-content,
+  .news-desc-p,
+  .news-content-p,
+  .news-content-h2,
+  .news-content-h3 {
+    font-size: 1rem; /* Adjust font size as needed */
+    padding: 10px; /* Adjust padding as needed */
+    margin: 1rem 0; /* Adjust margins as needed */
+  }
+
+  /* Example: Reduce image width for better mobile display */
+  .news-content-img {
+    width: 100%; /* Adjust width as needed */
+  }
+
+  /* Example: Hide author info on mobile (optional) */
+  .author-info {
+    display: none; /* Hide author info on mobile */
+  }
+
+  /* Example: Adjust the styles of the "Go Back" link */
+  .news-goBack {
+    font-size: 1rem; /* Adjust font size as needed */
+    margin: 1rem;
+  }
+
+  /* Example: Adjust styles for subcategories (optional) */
+  .news-subCategory {
+    flex-direction: column; /* Display subcategories vertically */
+    align-items: center;
+  }
+
+  .news-subCategory > div {
+    margin: 5px 0; /* Adjust spacing between subcategories */
+  }
+}

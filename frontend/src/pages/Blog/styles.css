@@ -128,7 +128,10 @@
     max-width: 100%; /* Make the container full width on smaller screens */
     padding: 10px; /* Reduce padding for smaller screens */
   }
-
+  .blog-goBack {
+    font-size: 1rem; /* Adjust font size as needed */
+    margin: 1rem;
+  }
   .blog-desc,
   .blog-content {
     font-size: 1rem; /* Adjust font size for smaller screens */

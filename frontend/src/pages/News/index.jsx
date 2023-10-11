@@ -40,7 +40,9 @@ const NewsDetails = () => {
             <meta name="description" content={news.description} />
             <meta
               name="keywords"
-              content="news, headlines, articles, latest news"
+              content={
+                news.topics && news.topics.length > 0 && news.topics.join(", ")
+              }
             />
             <meta property="og:title" content={news.title} />
             <meta property="og:image" content={news.cover} />

@@ -36,11 +36,15 @@ const Blog = () => {
       ) : blog ? (
         <div className="blog-wrap">
           <Helmet>
-            <title>{blog.title}</title>
+            <title>{blog ? blog.title : "FinancialHub"}</title>
             <meta name="description" content={blog.description} />
             <meta
               name="keywords"
-              content="finance, financial news, investing, personal finance, experts, blog"
+              content={
+                blog.subCategory &&
+                blog.subCategory.length > 0 &&
+                blog.subCategory.join(", ")
+              }
             />
             <meta property="og:title" content={blog.title} />
             <meta property="og:image" content={blog.cover} />

@@ -7,6 +7,7 @@ const storage = multer.memoryStorage();
 const upload = multer({ storage });
 const keyFile = path.join(__dirname + '/credential.json'); // Replace with the path to your downloaded JSON key file
 const { Readable } = require('stream'); // Import the stream module
+const sharp = require('sharp');
 
 const auth = new google.auth.GoogleAuth({
     keyFile,
@@ -48,24 +49,30 @@ const getAllNews = async (req, res) => {
 
 const createNews = async (req, res) => {
     try {
-        console.log(req.body.data)
         upload.single('cover')(req, res, async (err) => {
             if (err) {
                 return res.status(400).json({ error: 'File upload failed' });
             }
             try {
                 const imageBuffer = req.file.buffer;
-                const imageStream = Readable.from(imageBuffer);
+
+                // Use sharp to resize and compress the image
+                const compressedImageBuffer = await sharp(imageBuffer)
+                    .resize({ width: 800, height: 600 }) // Set the desired width and height
+                    .jpeg({ quality: 80 }) // Set the JPEG quality (adjust as needed)
+                    .toBuffer();
+
+                const imageStream = Readable.from(compressedImageBuffer);
+
                 const { title, content, description, topics, createdAt } = JSON.parse(req.body.data);
 
                 const fileExtension = req.file.originalname.split('.').pop();
-
                 const filename = `image_${Date.now()}.${fileExtension}`;
 
                 const driveResponse = await drive.files.create({
                     resource: {
                         name: filename,
-                        mimeType: req.file.mimetype, // Use the uploaded file's mimeType
+                        mimeType: req.file.mimetype,
                         parents: ['1zHrMQg0efUnNL2wohvvWmrqjJIx4iONU'],
                     },
                     media: {
@@ -86,7 +93,7 @@ const createNews = async (req, res) => {
                 });
 
                 await newNews.save();
-                res.status(201).send({ message: "upload" });
+                res.status(201).send({ message: 'upload' });
             } catch (error) {
                 console.error(error);
                 res.status(500).send({ error: 'Error uploading to Google Drive' });

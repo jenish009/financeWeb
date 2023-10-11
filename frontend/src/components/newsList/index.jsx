@@ -17,7 +17,9 @@ const NewsItem = ({ news }) => {
             <p className="newsItem-date">Published on: {newsObj.createdAt}</p>
             <p className="newsItem-description"> {newsObj.description}</p>
             <Link
-              to={`/news/${newsObj.title}/${newsObj._id}`} // Updated URL
+              to={`/news/${newsObj.title.toLowerCase().replace(/\s+/g, "-")}/${
+                newsObj._id
+              }`}
               className="newsItem-link" // Added class name
             >
               Read more
