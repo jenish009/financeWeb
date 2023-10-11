@@ -1,7 +1,7 @@
 .home-header {
   text-align: center;
   background-color: #f4f4f4;
-  padding: 2rem;
+  padding: 1rem;
   border-radius: 10px;
   box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
 }
@@ -82,7 +82,7 @@
 
 .header-content {
   text-align: center;
-  padding: 2rem;
+  padding: 1rem;
   background-color: #f4f4f4;
   border-radius: 10px;
   box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
@@ -97,7 +97,7 @@
 .header-content h1 {
   font-size: 3.5rem;
   color: #0f52ba;
-  margin-bottom: 1rem;
+  margin-bottom: 10px;
 }
 
 .header-content h1 .highlight {
@@ -108,7 +108,7 @@
   color: #555;
   font-weight: 500;
   font-size: 1.2rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 10px;
 }
 
 .buttons {
@@ -138,6 +138,49 @@
   border-radius: 10px;
   text-shadow: black;
   /* Add any other styling you want for the active button */
+}
+
+.subscribe-textbox {
+  position: relative;
+  width: 50%;
+  margin: auto;
+  margin-top: 20px;
+  padding: 15px;
+  border: 2px solid #3498db;
+  border-radius: 15px;
+  background-color: #f2f2f2;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  transform-origin: top;
+}
+.subscribe-textbox:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* Add any additional styling you want for the text box here */
+
+.subscribe-textbox input {
+  width: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+}
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 10px;
+  width: 20px;
+  height: 20px;
+  background-color: #000000; /* Change this to your desired arrow color */
+  clip-path: polygon(0% 0%, 100% 50%, 0% 100%);
+}
+.arrow:active {
+  background-color: blue; /* Change background color to blue when clicked */
+  width: 25px;
+  height: 25px;
 }
 
 @media (max-width: 768px) {
@@ -173,6 +216,17 @@
   }
 
   .header-content {
-    padding: 1rem; /* Reduce padding for header content */
+    padding: 10px; /* Reduce padding for header content */
+  }
+  .subscribe-textbox {
+    width: 80%; /* Adjust width for smaller screens */
+    padding: 5px;
+  }
+  .subscribe-textbox:hover {
+    transform: none;
+    box-shadow: none;
+  }
+  .subscribe-textbox input {
+    padding: 10px;
   }
 }

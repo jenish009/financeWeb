@@ -50,7 +50,7 @@ const getPosts = async (req, res) => {
             .skip(skip)
             .limit(parseInt(limit));
 
-        res.status(200).json({ posts, totalPages: Math.ceil(totalDocs / limit) });
+        res.status(200).json({ data: posts, totalPages: Math.ceil(totalDocs / limit) });
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: 'Internal Server Error' });

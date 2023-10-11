@@ -43,8 +43,8 @@ const Blog = () => {
               content="finance, financial news, investing, personal finance, experts, blog"
             />
             <meta property="og:title" content={blog.title} />
-            <meta property="og:image" content="%PUBLIC_URL%/author.jpg" />
-            <meta property="og:url" content="%PUBLIC_URL%" />
+            <meta property="og:image" content={blog.cover} />
+            <meta name="author" content={blog.authorName} />
           </Helmet>
           <Link className="blog-goBack" to="/">
             <span> &#8592;</span> <span>Go Back</span>

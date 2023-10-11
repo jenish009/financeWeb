@@ -3,10 +3,12 @@ import { Redirect, Route, Switch } from "react-router-dom";
 import "./App.css";
 import Blog from "./pages/Blog";
 import Home from "./pages/Home";
+import News from "./pages/News";
 import AboutUs from "./pages/AboutUs";
+import ContactUs from "./pages/ContactUs";
+
 import Header from "../src/components/Header";
 import Footer from "../src/components/Footer";
-import { Helmet } from "react-helmet"; // Import Helmet for managing meta tags
 
 const App = () => {
   return (
@@ -15,7 +17,9 @@ const App = () => {
       <Switch>
         <Route path="/" exact component={Home} />
         <Route path="/blog/:postTitle/:id" component={Blog} />
+        <Route path="/news/:newsTitle/:id" component={News} />
         <Route path="/about" component={AboutUs} />
+        <Route path="/contactUs" component={ContactUs} />
         <Redirect to="/" />
       </Switch>
       <Footer />

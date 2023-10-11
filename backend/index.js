@@ -9,10 +9,12 @@ app.use(express.json());
 // Use the cors middleware to allow all origins
 app.use(cors());
 
-const { userRoutes, taskRoutes, postRoutes } = require("./routers");
+const { userRoutes, taskRoutes, postRoutes, newsRoutes } = require("./routers");
 app.use("/user", userRoutes);
 app.use("/task", taskRoutes);
 app.use("/post", postRoutes);
+app.use("/news", newsRoutes);
+
 
 
 

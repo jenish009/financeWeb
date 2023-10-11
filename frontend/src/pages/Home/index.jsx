@@ -15,6 +15,7 @@ const Home = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [mode, setMode] = useState("news");
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const blogsPerPage = 9;
 
@@ -27,7 +28,7 @@ const Home = () => {
 
       const apiUrl =
         mode === "news"
-          ? `${process.env.REACT_APP_BACKEND_URL}/post/getNews`
+          ? `${process.env.REACT_APP_BACKEND_URL}/news/getAllNews`
           : `${process.env.REACT_APP_BACKEND_URL}/post/getPosts`;
 
       axios
@@ -38,7 +39,7 @@ const Home = () => {
           if (isMounted) {
             setData((prevData) => ({
               ...prevData,
-              [mode]: response.data.posts,
+              [mode]: response.data.data,
             }));
             setTotalPages(response.data.totalPages);
             setLoading(false);
@@ -85,51 +86,10 @@ const Home = () => {
     if (newMode !== mode) {
       setMode(newMode);
       setCurrentPage(1);
+      setLoading(true); // Set loading state to true immediately
+      setData((prevData) => ({ ...prevData, [newMode]: [] })); // Clear previous data
     }
   };
-
-  let newsData = [
-    {
-      id: 1,
-      title: "Breaking News 1",
-      date: "October 12, 2023",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-      image: "https://drive.google.com/uc?id=1M1qqGtcw2WIbXgimrR4-D_a1VKmGnA6Y",
-    },
-    {
-      id: 2,
-      title: "Latest Updates 2",
-      date: "October 11, 2023",
-      description:
-        "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-      image: "https://drive.google.com/uc?id=1M1qqGtcw2WIbXgimrR4-D_a1VKmGnA6Y",
-    },
-    {
-      id: 3,
-      title: "In-depth Analysis 3",
-      date: "October 10, 2023",
-      description:
-        "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-      image: "https://drive.google.com/uc?id=1M1qqGtcw2WIbXgimrR4-D_a1VKmGnA6Y",
-    },
-    {
-      id: 2,
-      title: "Latest Updates 2",
-      date: "October 11, 2023",
-      description:
-        "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-      image: "https://drive.google.com/uc?id=1M1qqGtcw2WIbXgimrR4-D_a1VKmGnA6Y",
-    },
-    {
-      id: 3,
-      title: "In-depth Analysis 3",
-      date: "October 10, 2023",
-      description:
-        "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-      image: "https://drive.google.com/uc?id=1M1qqGtcw2WIbXgimrR4-D_a1VKmGnA6Y",
-    },
-  ];
 
   return (
     <div>
@@ -150,8 +110,17 @@ const Home = () => {
           content="FinancialHub - Your Source for Financial News and Insights"
         />
         <meta property="og:image" content="%PUBLIC_URL%/author.jpg" />
-        <meta property="og:url" content="%PUBLIC_URL%" />
       </Helmet>
+      <SearchBar
+        value={searchKey}
+        clearSearch={() => {
+          setSearchKey("");
+          setCurrentPage(1);
+        }}
+        formSubmit={handleSearchBar}
+        handleSearchKey={(e) => setSearchKey(e.target.value)}
+      />
+
       <div className="round-button-navigationbar">
         <div
           className={`round-button ${
@@ -174,15 +143,6 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <SearchBar
-        value={searchKey}
-        clearSearch={() => {
-          setSearchKey("");
-          setCurrentPage(1);
-        }}
-        formSubmit={handleSearchBar}
-        handleSearchKey={(e) => setSearchKey(e.target.value)}
-      />
 
       {loading ? (
         <div className="loading-container">
@@ -190,10 +150,11 @@ const Home = () => {
         </div>
       ) : (
         <>
-          {data[mode].length === 0 && mode === "blogs" ? (
+          {console.log("data", data)}
+          {data[mode].length === 0 ? (
             <EmptyList />
           ) : mode === "news" ? (
-            <NewsList news={newsData} />
+            <NewsList news={data[mode]} />
           ) : (
             <BlogList blogs={data[mode]} />
           )}

@@ -1,4 +1,3 @@
-// NewsItem.js
 import React from "react";
 import { Link } from "react-router-dom";
 import "./styles.css"; // Updated CSS file name
@@ -9,16 +8,16 @@ const NewsItem = ({ news }) => {
       {news.map((newsObj, index) => (
         <div key={index} className="newsItem">
           <img
-            src={newsObj.image}
+            src={newsObj.cover}
             alt={newsObj.title}
             className="newsItem-img" // Added class name
           />
           <div className="newsItem-content">
             <h3 className="newsItem-title"> {newsObj.title}</h3>
-            <p className="newsItem-date">Published on: {newsObj.date}</p>
+            <p className="newsItem-date">Published on: {newsObj.createdAt}</p>
             <p className="newsItem-description"> {newsObj.description}</p>
             <Link
-              to={`/news/${news.id}`}
+              to={`/news/${newsObj.title}/${newsObj._id}`} // Updated URL
               className="newsItem-link" // Added class name
             >
               Read more
