@@ -27,6 +27,35 @@ const Blog = () => {
     window.scrollTo(0, 0);
   }, [id]);
 
+  useEffect(() => {
+    // Update meta tags when the 'blog' state changes
+    if (blog) {
+      const helmet = {
+        title: blog.title,
+        description: blog.description,
+        image: blog.cover,
+        keywords: blog.subCategory.join(", "), // Set keywords based on subCategory
+      };
+
+      document.title = helmet.title;
+      const metaTags = document.getElementsByTagName("meta");
+      for (let i = 0; i < metaTags.length; i++) {
+        if (metaTags[i].getAttribute("name") === "description") {
+          metaTags[i].setAttribute("content", helmet.description);
+        }
+        if (metaTags[i].getAttribute("property") === "og:title") {
+          metaTags[i].setAttribute("content", helmet.title);
+        }
+        if (metaTags[i].getAttribute("property") === "og:image") {
+          metaTags[i].setAttribute("content", helmet.image);
+        }
+        if (metaTags[i].getAttribute("name") === "news:keywords") {
+          metaTags[i].setAttribute("content", helmet.keywords);
+        }
+      }
+    }
+  }, [blog]);
+
   return (
     <>
       {loading ? (
@@ -35,21 +64,6 @@ const Blog = () => {
         </div>
       ) : blog ? (
         <div className="blog-wrap">
-          <Helmet>
-            <title>{blog ? blog.title : "FinancialHub"}</title>
-            <meta name="description" content={blog.description} />
-            <meta
-              name="keywords"
-              content={
-                blog.subCategory &&
-                blog.subCategory.length > 0 &&
-                blog.subCategory.join(", ")
-              }
-            />
-            <meta property="og:title" content={blog.title} />
-            <meta property="og:image" content={blog.cover} />
-            <meta name="author" content={blog.authorName} />
-          </Helmet>
           <Link className="blog-goBack" to="/">
             <span> &#8592;</span> <span>Go Back</span>
           </Link>

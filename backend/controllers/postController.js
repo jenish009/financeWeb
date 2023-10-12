@@ -47,6 +47,7 @@ const getPosts = async (req, res) => {
         // Find posts that match the filter criteria with pagination
         const posts = await postModel
             .find(filterObject)
+            .sort({ _id: -1 })
             .skip(skip)
             .limit(parseInt(limit));
 

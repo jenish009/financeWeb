@@ -19,6 +19,31 @@ const NewsDetails = () => {
       .then((response) => {
         setNews(response.data);
         setLoading(false);
+
+        // Set the meta tags dynamically
+        const helmet = {
+          title: response.data.title,
+          description: response.data.description,
+          image: response.data.cover,
+          keywords: response.data.topics.join(", "), // Set keywords based on topics
+        };
+
+        document.title = helmet.title;
+        const metaTags = document.getElementsByTagName("meta");
+        for (let i = 0; i < metaTags.length; i++) {
+          if (metaTags[i].getAttribute("name") === "description") {
+            metaTags[i].setAttribute("content", helmet.description);
+          }
+          if (metaTags[i].getAttribute("property") === "og:title") {
+            metaTags[i].setAttribute("content", helmet.title);
+          }
+          if (metaTags[i].getAttribute("property") === "og:image") {
+            metaTags[i].setAttribute("content", helmet.image);
+          }
+          if (metaTags[i].getAttribute("name") === "news:keywords") {
+            metaTags[i].setAttribute("content", helmet.keywords);
+          }
+        }
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
@@ -35,20 +60,6 @@ const NewsDetails = () => {
         </div>
       ) : news ? (
         <div className="news-details-wrap">
-          <Helmet>
-            <title>{news.title}</title>
-            <meta name="description" content={news.description} />
-            <meta
-              name="keywords"
-              content={
-                news.topics && news.topics.length > 0 && news.topics.join(", ")
-              }
-            />
-            <meta property="og:title" content={news.title} />
-            <meta property="og:image" content={news.cover} />
-            <meta name="author" content={news.authorName} />
-          </Helmet>
-
           <header>
             <Link className="news-goBack" to="/">
               <span> &#8592;</span> <span>Go Back</span>
