@@ -10,8 +10,7 @@ const Header = () => {
   const [subscribeMessage, setSubscribeMessage] = useState(""); // State for the subscribe success message
 
   const handleSubscribeClick = () => {
-    setIsSubscribed(!isSubscribed);
-    setEmail("");
+    setIsSubscribed(true); // Set isSubscribed to true when the Subscribe button is clicked
     setSubscribeMessage(""); // Reset the message
   };
 
@@ -21,7 +20,7 @@ const Header = () => {
 
   const callApi = () => {
     if (email) {
-      fetch("http://localhost:5000/subscribe", {
+      fetch(`${process.env.REACT_APP_BACKEND_URL}/subscribe`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -30,7 +29,8 @@ const Header = () => {
       })
         .then((response) => response.json())
         .then((data) => {
-          setSubscribeMessage("subscribed!"); // Set the subscribe success message
+          console.log(data); // Add this line to check if the message is received
+          setSubscribeMessage(data.message); // Set the subscribe success message
           setIsSubscribed(false);
         })
         .catch((error) => {
@@ -75,12 +75,12 @@ const Header = () => {
           </li>
         </ul>
       </nav>
-      <div className="header-content">
+      <div className="header-content-p">
         <h1>
           <span className="highlight">“</span> FinancialHub.info{" "}
           <span className="highlight">”</span>
         </h1>
-        <p>
+        <p className="home-header-p">
           Empowering Your Financial Journey
           <br /> with Expert Insights and Practical Tips.
         </p>
@@ -88,9 +88,6 @@ const Header = () => {
           <button className="header-button" onClick={handleSubscribeClick}>
             Subscribe
           </button>
-          {/* <button className="header-button" onClick={handleReadMore}>
-            Read More
-          </button> */}
         </div>
         {isSubscribed && (
           <div className="subscribe-textbox">
@@ -109,6 +106,9 @@ const Header = () => {
               &#9655;
             </button>
           </div>
+        )}
+        {subscribeMessage && (
+          <p className="sucess-message">{subscribeMessage}</p>
         )}
       </div>
     </header>

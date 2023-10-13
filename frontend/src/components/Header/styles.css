@@ -22,7 +22,7 @@
   color: #ff4500;
 }
 
-.home-header p {
+.home-header-p {
   color: #555;
   font-weight: 500;
   font-size: 1.2rem;
@@ -104,7 +104,7 @@
   color: #ff4500;
 }
 
-.header-content p {
+.header-content-p {
   color: #555;
   font-weight: 500;
   font-size: 1.2rem;
@@ -181,6 +181,17 @@
   background-color: blue; /* Change background color to blue when clicked */
   width: 25px;
   height: 25px;
+}
+.sucess-message {
+  background-color: #4caf50; /* Background color */
+  color: #fff; /* Text color */
+  font-size: 18px; /* Font size */
+  padding: 10px; /* Padding around the message */
+  border-radius: 5px; /* Rounded corners */
+  text-align: center; /* Center-align the text */
+  box-shadow: 0 2px 5px rgba(255, 255, 255, 0.2); /* Box shadow for a lifted look */
+  margin-top: 20px; /* Add some spacing above the message */
+  /* You can add more styles as desired, such as font-weight, text-align, etc. */
 }
 
 @media (max-width: 768px) {
