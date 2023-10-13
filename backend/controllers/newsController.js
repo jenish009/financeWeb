@@ -19,7 +19,7 @@ const drive = google.drive({ version: 'v3', auth });
 
 const getAllNews = async (req, res) => {
     try {
-        const searchFilter = req.query.search || '';
+        const searchFilter = req.query.searchFilter || '';
         const page = parseInt(req.query.page) || 1;
         const limit = parseInt(req.query.limit) || 10; // Set a default limit if not provided
         const skip = (page - 1) * limit; // Calculate the number of documents to skip

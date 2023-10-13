@@ -22,30 +22,7 @@ const Home = () => {
   useEffect(() => {
     let debounceTimeout;
     let isMounted = true;
-    const helmet = {
-      title: "FinancialHub - Your Source for Financial News and Insights",
-      description:
-        "Stay informed on the latest financial news and trends with our daily blog. Get insights and advice from experts on investing, personal finance, and more. FinancialHub is your trusted source for financial information.",
-      image: "%PUBLIC_URL%/author.jpg",
-      keywords:
-        "finance, financial news, investing, personal finance, experts, blog",
-    };
-    document.title = helmet.title;
-    const metaTags = document.getElementsByTagName("meta");
-    for (let i = 0; i < metaTags.length; i++) {
-      if (metaTags[i].getAttribute("name") === "description") {
-        metaTags[i].setAttribute("content", helmet.description);
-      }
-      if (metaTags[i].getAttribute("property") === "og:title") {
-        metaTags[i].setAttribute("content", helmet.title);
-      }
-      if (metaTags[i].getAttribute("property") === "og:image") {
-        metaTags[i].setAttribute("content", helmet.image);
-      }
-      if (metaTags[i].getAttribute("name") === "news:keywords") {
-        metaTags[i].setAttribute("content", helmet.keywords);
-      }
-    }
+
     const fetchData = () => {
       setLoading(true);
 
@@ -116,24 +93,6 @@ const Home = () => {
 
   return (
     <div>
-      <Helmet>
-        <title>
-          FinancialHub - Your Source for Financial News and Insights
-        </title>
-        <meta
-          name="description"
-          content="Stay informed on the latest financial news and trends with our daily blog. Get insights and advice from experts on investing, personal finance, and more. FinancialHub is your trusted source for financial information."
-        />
-        <meta
-          name="keywords"
-          content="finance, financial news, investing, personal finance, experts, blog"
-        />
-        <meta
-          property="og:title"
-          content="FinancialHub - Your Source for Financial News and Insights"
-        />
-        <meta property="og:image" content="%PUBLIC_URL%/author.jpg" />
-      </Helmet>
       <SearchBar
         value={searchKey}
         clearSearch={() => {

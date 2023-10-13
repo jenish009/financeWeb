@@ -83,15 +83,19 @@ const NewsDetails = () => {
               news.content.map((item, index) => {
                 if (item.p) {
                   return (
-                    <p key={index} className="news-content-p">
-                      {item.p}
-                    </p>
+                    <p
+                      key={index}
+                      className="news-content-p"
+                      dangerouslySetInnerHTML={{ __html: item.p }}
+                    />
                   );
                 } else if (item.h2) {
                   return (
-                    <h2 key={index} className="news-content-h2">
-                      {item.h2}
-                    </h2>
+                    <h2
+                      key={index}
+                      className="news-content-h2"
+                      dangerouslySetInnerHTML={{ __html: item.h2 }}
+                    />
                   );
                 } else if (item.img) {
                   return (
@@ -104,9 +108,11 @@ const NewsDetails = () => {
                   );
                 } else if (item.h3) {
                   return (
-                    <h3 key={index} className="news-content-h3">
-                      {item.h3}
-                    </h3>
+                    <h3
+                      key={index}
+                      className="news-content-h3"
+                      dangerouslySetInnerHTML={{ __html: item.h3 }}
+                    />
                   ); // Handle other content types if needed
                 }
               })}

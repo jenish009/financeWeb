@@ -6,13 +6,13 @@ const Header = () => {
   const location = useLocation();
 
   const [isSubscribed, setIsSubscribed] = useState(false);
-
   const [email, setEmail] = useState("");
+  const [subscribeMessage, setSubscribeMessage] = useState(""); // State for the subscribe success message
 
   const handleSubscribeClick = () => {
     setIsSubscribed(!isSubscribed);
-
     setEmail("");
+    setSubscribeMessage(""); // Reset the message
   };
 
   const handleReadMore = () => {
@@ -20,20 +20,23 @@ const Header = () => {
   };
 
   const callApi = () => {
-    fetch("your-api-endpoint", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ email }),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
+    if (email) {
+      fetch("http://localhost:5000/subscribe", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email }),
       })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
+        .then((response) => response.json())
+        .then((data) => {
+          setSubscribeMessage("subscribed!"); // Set the subscribe success message
+          setIsSubscribed(false);
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+        });
+    }
   };
 
   return (
@@ -60,6 +63,14 @@ const Header = () => {
               className={location.pathname === "/contactUs" ? "active" : ""}
             >
               Contact
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link
+              to="/privacyPolicy"
+              className={location.pathname === "/privacyPolicy" ? "active" : ""}
+            >
+              Policy
             </Link>
           </li>
         </ul>
@@ -93,7 +104,6 @@ const Header = () => {
               className="arrow"
               onClick={() => {
                 callApi(); // Call the API when the arrow is clicked
-                setEmail(""); // Reset the email input value
               }}
             >
               &#9655;

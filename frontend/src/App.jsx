@@ -6,6 +6,7 @@ import Home from "./pages/Home";
 import News from "./pages/News";
 import AboutUs from "./pages/AboutUs";
 import ContactUs from "./pages/ContactUs";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
 
 import Header from "../src/components/Header";
 import Footer from "../src/components/Footer";
@@ -20,6 +21,8 @@ const App = () => {
         <Route path="/news/:newsTitle/:id" component={News} />
         <Route path="/about" component={AboutUs} />
         <Route path="/contactUs" component={ContactUs} />
+        <Route path="/privacyPolicy" component={PrivacyPolicy} />
+
         <Redirect to="/" />
       </Switch>
       <Footer />

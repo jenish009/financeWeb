@@ -84,7 +84,7 @@
   display: block; /* Remove any extra space below the image */
   border-radius: 8px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-  margin-top: 0px;
+  margin: 0px auto;
 }
 
 /* Blog subCategory styles */
@@ -98,7 +98,6 @@
   margin: 0 10px;
 }
 
-/* Author image styles */
 .author-logo {
   width: 40px; /* Set the desired width */
   height: 40px; /* Set the desired height */

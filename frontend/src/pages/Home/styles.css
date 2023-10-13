@@ -39,8 +39,10 @@
 
   /* Add styles for active buttons */
   &.active-round-button {
-    background-color: #0080ff;
+    background-color: hsl(59, 57%, 49%);
     border-radius: 50%;
+    height: 80px;
+    width: 80px;
   }
 
   /* Hover effect */
@@ -67,8 +69,8 @@
 
 /* Styles for round button images */
 .logo {
-  width: 40px;
-  height: 40px;
+  width: 70px;
+  height: 70px;
   border-radius: 50%;
 }
 
@@ -130,8 +132,8 @@
   }
 
   .logo {
-    width: 40px;
-    height: 40px;
+    width: 70px;
+    height: 70px;
   }
   .round-button-img-container:hover {
     background-color: rgb(255, 255, 255);
