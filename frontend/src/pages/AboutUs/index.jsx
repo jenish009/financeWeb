@@ -1,8 +1,8 @@
 import React from "react";
 import "./AboutUs.css"; // Import the CSS for this page
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 
-const originUrl = window.location.origin;
+const currentURL = window.location.href;
 const AboutUs = () => (
   <div className="about-us">
     <Helmet>
@@ -41,14 +41,13 @@ const AboutUs = () => (
       />
       <meta name="twitter:image" content="%PUBLIC_URL%/author.jpg" />
       <meta name="twitter:site" content="%PUBLIC_URL%" />
-      <title>
-        FinancialHub: Your Daily Source for Financial News, Insights, and Advice
-      </title>
+      <link rel="canonical" href={currentURL} />
+      <title>Your Daily Source for Financial News, Insights, and Advice</title>
     </Helmet>
-    <h1 className="page-titel-h1">About Us</h1>
+    <h2 className="page-titel-h1">About Us</h2>
     <p>
       Welcome to{" "}
-      <a href={originUrl}>
+      <a href={currentURL}>
         <strong>FinancialHub.info</strong>
       </a>{" "}
       - Your Trusted Source for Financial Insights and Expertise!
@@ -57,7 +56,7 @@ const AboutUs = () => (
     <h2>Who We Are</h2>
     <p>
       At{" "}
-      <a href={originUrl}>
+      <a href={currentURL}>
         {" "}
         <strong>FinancialHub.info</strong>
       </a>{" "}
@@ -142,7 +141,7 @@ const AboutUs = () => (
 
     <p>
       Thank you for choosing{" "}
-      <a href={originUrl}>
+      <a href={currentURL}>
         <strong>FinancialHub.info</strong>
       </a>{" "}
       as your go-to resource for all things finance. We look forward to being a

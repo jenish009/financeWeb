@@ -6,7 +6,7 @@ import "./styles.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { BeatLoader } from "react-spinners";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 
 const Blog = () => {
   const { id } = useParams();
@@ -35,26 +35,35 @@ const Blog = () => {
           <Helmet>
             <meta
               name="title"
-              content={`${blog.title} - FinancialHub | FinancialHub.info`}
+              content={`${blog.title} FinancialHub.info`.slice(0, 65)}
             />
-            <meta name="description" content={blog.description} />
+            <meta name="description" content={blog.description.slice(0, 165)} />
             <meta name="keywords" content={blog.subCategory.join(",")} />
             <meta
               property="og:title"
-              content={`${blog.title} - FinancialHub | FinancialHub.info`}
+              content={`${blog.title} FinancialHub.info`.slice(0, 65)}
             />
-            <meta property="og:description" content={blog.description} />
+            <meta
+              property="og:description"
+              content={blog.description.slice(0, 165)}
+            />
             <meta property="og:image" content={blog.cover} />
             <meta property="og:url" content={currentURL} />
             <meta name="twitter:card" content={blog.cover} />
             <meta
               property="twitter:title"
-              content={`${blog.title} - FinancialHub | FinancialHub.info`}
+              content={`${blog.title} FinancialHub.info`.slice(0, 65)}
             />
-            <meta property="twitter:description" content={blog.description} />
+            <meta
+              property="twitter:description"
+              content={blog.description.slice(0, 165)}
+            />
             <meta name="twitter:image" content={blog.cover} />
             <meta name="twitter:site" content={currentURL} />
-            <title>{`${`${blog.title} - FinancialHub | FinancialHub.info`}`}</title>
+            <link rel="canonical" href={currentURL} />
+            <title>
+              {blog && `${blog.title} FinancialHub.info`.slice(0, 65)}
+            </title>{" "}
           </Helmet>
         </>
       )}
@@ -79,7 +88,13 @@ const Blog = () => {
               ))}
             </div>
           </header>
-          <img className="blog-thumbnail" src={blog.cover} alt="cover" />
+          <img
+            className="blog-thumbnail"
+            width="100%"
+            height="100%"
+            src={blog.cover}
+            alt="cover"
+          />
           <p className="blog-desc-p">{blog.description}</p>
 
           <div className="blog-content">
@@ -125,6 +140,8 @@ const Blog = () => {
                 src={blog.authorAvatar}
                 alt="Author Avatar"
                 className="author-logo"
+                width="40"
+                height="40"
               />
               <p className="author-name">{blog.authorName}</p>
             </div>

@@ -22,7 +22,7 @@ const Footer = () => (
         </form>
       </div>
       <div className="footer-right">
-        <div className="social-icons">
+        {/* <div className="social-icons">
           <a href="#">
             <i className="fab fa-facebook"></i>
           </a>
@@ -32,7 +32,7 @@ const Footer = () => (
           <a href="#">
             <i className="fab fa-instagram"></i>
           </a>
-        </div>
+        </div> */}
         <div className="contact-info">
           <p>Email: admin@financialhub.info</p>
         </div>

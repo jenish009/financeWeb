@@ -6,7 +6,7 @@ import axios from "axios";
 import { BeatLoader } from "react-spinners";
 import "./styles.css";
 import NewsList from "../../components/newsList";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 
 const Home = () => {
   const [data, setData] = useState({ news: [], blogs: [] });
@@ -129,9 +129,9 @@ const Home = () => {
         />
         <meta name="twitter:image" content="%PUBLIC_URL%/author.jpg" />
         <meta name="twitter:site" content="%PUBLIC_URL%" />
+        <link rel="canonical" href="" />
         <title>
-          FinancialHub: Your Daily Source for Financial News, Insights, and
-          Advice
+          Your Daily Source for Financial News, Insights, and Advice
         </title>
       </Helmet>
       <SearchBar

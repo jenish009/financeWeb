@@ -76,10 +76,10 @@ const Header = () => {
         </ul>
       </nav>
       <div className="header-content-p">
-        <h1>
+        <h2 className="home-header-title">
           <span className="highlight">“</span> FinancialHub.info{" "}
           <span className="highlight">”</span>
-        </h1>
+        </h2>
         <p className="home-header-p">
           Empowering Your Financial Journey
           <br /> with Expert Insights and Practical Tips.

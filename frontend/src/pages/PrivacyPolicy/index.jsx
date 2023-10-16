@@ -1,12 +1,55 @@
 import React from "react";
 import "./PrivacyPolicy.css"; // Include your updated CSS file
+import { Helmet } from "react-helmet-async";
+const currentURL = window.location.href;
 
 const PrivacyPolicy = () => {
   return (
     <div className="privacy-policy-container">
-      <h1 className="privacy-policy-title">
+      <Helmet>
+        <meta
+          name="title"
+          content="FinancialHub: Your Daily Source for Financial News, Insights, and Advice"
+        />
+        <meta
+          name="description"
+          content="Stay informed on the latest financial news and trends with our daily blog. Get insights and advice from experts on various financial topics."
+        />
+        <meta
+          name="keywords"
+          content="finance, financial news, investing, personal finance, experts, blog, Stock market, Investing, Personal finance, Financial planning, Retirement planning, Real estate, Business, Technology, Economy, Inflation, Interest rates, Cryptocurrency, Blockchain"
+        />
+
+        <meta
+          property="og:title"
+          content="FinancialHub: Your Daily Source for Financial News, Insights, and Advice"
+        />
+        <meta
+          property="og:description"
+          content="Stay informed on the latest financial news and trends with our daily blog. Get insights and advice from experts on various financial topics."
+        />
+        <meta property="og:image" content="%PUBLIC_URL%/author.jpg" />
+        <meta property="og:url" content="financialHub.info" />
+
+        <meta name="twitter:card" content="%PUBLIC_URL%/author.jpg" />
+        <meta
+          name="twitter:title"
+          content="FinancialHub: Your Daily Source for Financial News, Insights, and Advice"
+        />
+        <meta
+          name="twitter:description"
+          content="Stay informed on the latest financial news and trends with our daily blog. Get insights and advice from experts on various financial topics."
+        />
+        <meta name="twitter:image" content="%PUBLIC_URL%/author.jpg" />
+        <meta name="twitter:site" content="%PUBLIC_URL%" />
+        <link rel="canonical" href={currentURL} />
+        <title>
+          Your Daily Source for Financial News, Insights, and Advice
+        </title>
+      </Helmet>
+      <h2 className="privacy-policy-title">
         Privacy Policy for financialHub.info
-      </h1>
+      </h2>
       <div className="privacy-policy-description">
         <p>
           At <b>financialHub.info</b>, we are committed to protecting your

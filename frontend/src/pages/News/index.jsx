@@ -5,7 +5,7 @@ import EmptyList from "../../components/common/EmptyList";
 import "./NewsDetails.css";
 import axios from "axios";
 import { BeatLoader } from "react-spinners";
-import { Helmet } from "react-helmet"; // Import Helmet for managing meta tags
+import { Helmet } from "react-helmet-async"; // Import Helmet for managing meta tags
 import { Link } from "react-router-dom";
 
 const NewsDetails = () => {
@@ -34,26 +34,34 @@ const NewsDetails = () => {
         <Helmet>
           <meta
             name="title"
-            content={`${news.title} - FinancialHub | FinancialHub.info`}
+            content={`${news.title} FinancialHub.info`.slice(0, 65)}
           />
-          <meta name="description" content={news.description} />
+          <meta name="description" content={news.description.slice(0, 165)} />
           <meta name="keywords" content={news.topics.join(",")} />
           <meta
             property="og:title"
-            content={`${news.title} - FinancialHub | FinancialHub.info`}
+            content={`${news.title} FinancialHub.info`.slice(0, 65)}
           />
-          <meta property="og:description" content={news.description} />
+          <meta
+            property="og:description"
+            content={news.description.slice(0, 165)}
+          />
           <meta property="og:image" content={news.cover} />
           <meta property="og:url" content={currentURL} />
           <meta name="twitter:card" content={news.cover} />
           <meta
             property="twitter:title"
-            content={`${news.title} - FinancialHub | FinancialHub.info`}
+            content={`${news.title} FinancialHub.info`.slice(0, 65)}
           />
-          <meta property="twitter:description" content={news.description} />
+          <meta
+            property="twitter:description"
+            content={news.description.slice(0, 165)}
+          />
           <meta name="twitter:image" content={news.cover} />
           <meta name="twitter:site" content={currentURL} />
-          <title>{`${`${news.title} - FinancialHub | FinancialHub.info`}`}</title>
+          <link rel="canonical" href={currentURL} />
+
+          <title>{`${`${news.title} FinancialHub.info`.slice(0, 65)}`}</title>
         </Helmet>
       )}
       {loading ? (
@@ -77,7 +85,13 @@ const NewsDetails = () => {
                 ))}
             </div>
           </header>
-          <img className="news-thumbnail" src={news.cover} alt="news cover" />
+          <img
+            className="news-thumbnail"
+            src={news.cover}
+            width="100%"
+            height="100%"
+            alt="news cover"
+          />
           <p className="news-description">{news.description}</p>
 
           <div className="news-content">
