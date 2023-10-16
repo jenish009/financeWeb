@@ -5,8 +5,8 @@ import SearchBar from "../../components/Home/SearchBar";
 import axios from "axios";
 import { BeatLoader } from "react-spinners";
 import "./styles.css";
-import NewsList from "../../components/newsList/index";
-import { Helmet } from "react-helmet"; // Import Helmet for managing meta tags
+import NewsList from "../../components/newsList";
+import { Helmet } from "react-helmet";
 
 const Home = () => {
   const [data, setData] = useState({ news: [], blogs: [] });
@@ -15,7 +15,6 @@ const Home = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [mode, setMode] = useState("news");
-  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const blogsPerPage = 9;
 
@@ -79,6 +78,7 @@ const Home = () => {
   const handlePageChange = (newPage) => {
     if (newPage !== currentPage) {
       setCurrentPage(newPage);
+      window.scrollTo(0, 0);
     }
   };
 
@@ -86,19 +86,57 @@ const Home = () => {
     if (newMode !== mode) {
       setMode(newMode);
       setCurrentPage(1);
-      setLoading(true); // Set loading state to true immediately
-      setData((prevData) => ({ ...prevData, [newMode]: [] })); // Clear previous data
+      setLoading(true);
+      setData((prevData) => ({ ...prevData, [newMode]: [] }));
     }
   };
 
   return (
     <div>
+      <Helmet>
+        <meta
+          name="title"
+          content="FinancialHub: Your Daily Source for Financial News, Insights, and Advice"
+        />
+        <meta
+          name="description"
+          content="Stay informed on the latest financial news and trends with our daily blog. Get insights and advice from experts on various financial topics."
+        />
+        <meta
+          name="keywords"
+          content="finance, financial news, investing, personal finance, experts, blog, Stock market, Investing, Personal finance, Financial planning, Retirement planning, Real estate, Business, Technology, Economy, Inflation, Interest rates, Cryptocurrency, Blockchain"
+        />
+
+        <meta
+          property="og:title"
+          content="FinancialHub: Your Daily Source for Financial News, Insights, and Advice"
+        />
+        <meta
+          property="og:description"
+          content="Stay informed on the latest financial news and trends with our daily blog. Get insights and advice from experts on various financial topics."
+        />
+        <meta property="og:image" content="%PUBLIC_URL%/author.jpg" />
+        <meta property="og:url" content="financialHub.info" />
+
+        <meta name="twitter:card" content="%PUBLIC_URL%/author.jpg" />
+        <meta
+          name="twitter:title"
+          content="FinancialHub: Your Daily Source for Financial News, Insights, and Advice"
+        />
+        <meta
+          name="twitter:description"
+          content="Stay informed on the latest financial news and trends with our daily blog. Get insights and advice from experts on various financial topics."
+        />
+        <meta name="twitter:image" content="%PUBLIC_URL%/author.jpg" />
+        <meta name="twitter:site" content="%PUBLIC_URL%" />
+        <title>
+          FinancialHub: Your Daily Source for Financial News, Insights, and
+          Advice
+        </title>
+      </Helmet>
       <SearchBar
         value={searchKey}
-        clearSearch={() => {
-          setSearchKey("");
-          setCurrentPage(1);
-        }}
+        clearSearch={handleClearSearch}
         formSubmit={handleSearchBar}
         handleSearchKey={(e) => setSearchKey(e.target.value)}
       />
@@ -132,7 +170,6 @@ const Home = () => {
         </div>
       ) : (
         <>
-          {console.log("data", data)}
           {data[mode].length === 0 ? (
             <EmptyList />
           ) : mode === "news" ? (

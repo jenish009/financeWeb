@@ -35,7 +35,6 @@ const Footer = () => (
         </div>
         <div className="contact-info">
           <p>Email: admin@financialhub.info</p>
-          <p>Phone: +123-456-7890</p>
         </div>
       </div>
     </div>

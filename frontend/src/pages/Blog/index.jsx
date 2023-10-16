@@ -6,7 +6,7 @@ import "./styles.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { BeatLoader } from "react-spinners";
-import { Helmet } from "react-helmet"; // Import Helmet for managing meta tags
+import { Helmet } from "react-helmet";
 
 const Blog = () => {
   const { id } = useParams();
@@ -26,19 +26,37 @@ const Blog = () => {
       });
     window.scrollTo(0, 0);
   }, [id]);
-
-  useEffect(() => {}, [blog]);
+  const currentURL = window.location.href;
 
   return (
     <>
       {blog && (
-        <Helmet>
-          <title>{blog.title}</title>
-          <meta name="description" content={blog.description} />
-          <meta name="keywords" content={blog.subCategory.join(",")} />
-          <meta property="og:title" content={blog.title} />
-          <meta property="og:image" content="%PUBLIC_URL%/author.jpg" />
-        </Helmet>
+        <>
+          <Helmet>
+            <meta
+              name="title"
+              content={`${blog.title} - FinancialHub | FinancialHub.info`}
+            />
+            <meta name="description" content={blog.description} />
+            <meta name="keywords" content={blog.subCategory.join(",")} />
+            <meta
+              property="og:title"
+              content={`${blog.title} - FinancialHub | FinancialHub.info`}
+            />
+            <meta property="og:description" content={blog.description} />
+            <meta property="og:image" content={blog.cover} />
+            <meta property="og:url" content={currentURL} />
+            <meta name="twitter:card" content={blog.cover} />
+            <meta
+              property="twitter:title"
+              content={`${blog.title} - FinancialHub | FinancialHub.info`}
+            />
+            <meta property="twitter:description" content={blog.description} />
+            <meta name="twitter:image" content={blog.cover} />
+            <meta name="twitter:site" content={currentURL} />
+            <title>{`${`${blog.title} - FinancialHub | FinancialHub.info`}`}</title>
+          </Helmet>
+        </>
       )}
       {loading ? (
         <div className="loading-container">
@@ -69,15 +87,19 @@ const Blog = () => {
               blog.content.map((item, index) => {
                 if (item.p) {
                   return (
-                    <p key={index} className="blog-content-p">
-                      {item.p}
-                    </p>
+                    <p
+                      key={index}
+                      className="blog-content-p"
+                      dangerouslySetInnerHTML={{ __html: item.p }}
+                    />
                   );
                 } else if (item.h2) {
                   return (
-                    <h2 key={index} className="blog-content-h2">
-                      {item.h2}
-                    </h2>
+                    <h2
+                      key={index}
+                      className="blog-content-h2"
+                      dangerouslySetInnerHTML={{ __html: item.h2 }}
+                    />
                   );
                 } else if (item.img) {
                   return (
@@ -93,7 +115,7 @@ const Blog = () => {
                     <h3 key={index} className="blog-content-h3">
                       {item.h3}
                     </h3>
-                  ); // Handle other content types if needed
+                  );
                 }
               })}
 

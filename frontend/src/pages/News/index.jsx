@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import Chip from "../../components/common/Chip";
 import EmptyList from "../../components/common/EmptyList";
-import "./NewsDetails.css"; // Import the CSS file
+import "./NewsDetails.css";
 import axios from "axios";
 import { BeatLoader } from "react-spinners";
 import { Helmet } from "react-helmet"; // Import Helmet for managing meta tags
@@ -19,31 +19,6 @@ const NewsDetails = () => {
       .then((response) => {
         setNews(response.data);
         setLoading(false);
-
-        // Set the meta tags dynamically
-        const helmet = {
-          title: response.data.title,
-          description: response.data.description,
-          image: response.data.cover,
-          keywords: response.data.topics.join(", "), // Set keywords based on topics
-        };
-
-        document.title = helmet.title;
-        const metaTags = document.getElementsByTagName("meta");
-        for (let i = 0; i < metaTags.length; i++) {
-          if (metaTags[i].getAttribute("name") === "description") {
-            metaTags[i].setAttribute("content", helmet.description);
-          }
-          if (metaTags[i].getAttribute("property") === "og:title") {
-            metaTags[i].setAttribute("content", helmet.title);
-          }
-          if (metaTags[i].getAttribute("property") === "og:image") {
-            metaTags[i].setAttribute("content", helmet.image);
-          }
-          if (metaTags[i].getAttribute("name") === "news:keywords") {
-            metaTags[i].setAttribute("content", helmet.keywords);
-          }
-        }
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
@@ -51,9 +26,36 @@ const NewsDetails = () => {
       });
     window.scrollTo(0, 0);
   }, [id]);
+  const currentURL = window.location.href;
 
   return (
     <>
+      {news && (
+        <Helmet>
+          <meta
+            name="title"
+            content={`${news.title} - FinancialHub | FinancialHub.info`}
+          />
+          <meta name="description" content={news.description} />
+          <meta name="keywords" content={news.topics.join(",")} />
+          <meta
+            property="og:title"
+            content={`${news.title} - FinancialHub | FinancialHub.info`}
+          />
+          <meta property="og:description" content={news.description} />
+          <meta property="og:image" content={news.cover} />
+          <meta property="og:url" content={currentURL} />
+          <meta name="twitter:card" content={news.cover} />
+          <meta
+            property="twitter:title"
+            content={`${news.title} - FinancialHub | FinancialHub.info`}
+          />
+          <meta property="twitter:description" content={news.description} />
+          <meta name="twitter:image" content={news.cover} />
+          <meta name="twitter:site" content={currentURL} />
+          <title>{`${`${news.title} - FinancialHub | FinancialHub.info`}`}</title>
+        </Helmet>
+      )}
       {loading ? (
         <div className="loading-container">
           <BeatLoader color={"#0f52ba"} loading={loading} size={20} />
@@ -113,7 +115,7 @@ const NewsDetails = () => {
                       className="news-content-h3"
                       dangerouslySetInnerHTML={{ __html: item.h3 }}
                     />
-                  ); // Handle other content types if needed
+                  );
                 }
               })}
           </div>
