@@ -38,25 +38,35 @@ const getPosts = async (req, res) => {
             };
         }
 
-        // Count the total number of documents that match the filter criteria
-        const totalDocs = await postModel.countDocuments(filterObject);
+        // Check if 'page' and 'limit' are not provided and return all data if not
+        if (!req.query.page && !req.query.limit) {
+            const posts = await postModel
+                .find(filterObject)
+                .sort({ _id: -1 })
+                .exec();
+            res.status(200).json({ data: posts });
+        } else {
+            // Count the total number of documents that match the filter criteria
+            const totalDocs = await postModel.countDocuments(filterObject);
 
-        // Calculate the skip value to paginate the results
-        const skip = (page - 1) * limit;
+            // Calculate the skip value to paginate the results
+            const skip = (page - 1) * limit;
 
-        // Find posts that match the filter criteria with pagination
-        const posts = await postModel
-            .find(filterObject)
-            .sort({ _id: -1 })
-            .skip(skip)
-            .limit(parseInt(limit));
+            // Find posts that match the filter criteria with pagination
+            const posts = await postModel
+                .find(filterObject)
+                .sort({ _id: -1 })
+                .skip(skip)
+                .limit(parseInt(limit));
 
-        res.status(200).json({ data: posts, totalPages: Math.ceil(totalDocs / limit) });
+            res.status(200).json({ data: posts, totalPages: Math.ceil(totalDocs / limit) });
+        }
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: 'Internal Server Error' });
     }
 };
+
 
 
 

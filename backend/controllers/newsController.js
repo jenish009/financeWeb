@@ -32,20 +32,26 @@ const getAllNews = async (req, res) => {
             ],
         };
 
-        const news = await newsModel.find(query).sort({ _id: -1 })
-            .skip(skip)
-            .limit(limit)
-            .exec();
-
-        const totalDocs = await newsModel.countDocuments(query);
-        const totalPages = Math.ceil(totalDocs / limit);
-
-        res.status(200).json({ data: news, totalPages });
+        // Check if page and limit are not provided, and if so, don't use pagination
+        if (!req.query.page && !req.query.limit) {
+            const news = await newsModel.find(query).sort({ _id: -1 }).exec();
+            res.status(200).json({ data: news });
+        } else {
+            const news = await newsModel.find(query)
+                .sort({ _id: -1 })
+                .skip(skip)
+                .limit(limit)
+                .exec();
+            const totalDocs = await newsModel.countDocuments(query);
+            const totalPages = Math.ceil(totalDocs / limit);
+            res.status(200).json({ data: news, totalPages });
+        }
     } catch (error) {
         console.error(error);
         res.status(500).json({ error: 'Internal Server Error' });
     }
 };
+
 
 const createNews = async (req, res) => {
     try {
