@@ -74,7 +74,7 @@ const getAllNewsFeed = async (req, res) => {
                 <item>
                     <title><![CDATA[${entry.title}]]></title>
                     <description><![CDATA[${entry.description}]]></description>
-                    <link>https://yourwebsite.com/news/${entry._id}</link>
+                    <link>https://financialhub.info/news/${item.title.toLowerCase().replace(/\s+/g, "-")}/${item._id}</link>
                     <guid isPermaLink="false">${entry._id}</guid>
                     <pubDate>${entry.createdAt}</pubDate>
                 </item>
