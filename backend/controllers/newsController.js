@@ -8,6 +8,7 @@ const upload = multer({ storage });
 const keyFile = path.join(__dirname + '/credential.json'); // Replace with the path to your downloaded JSON key file
 const { Readable } = require('stream'); // Import the stream module
 const sharp = require('sharp');
+const RSS = require('rss');
 
 const auth = new google.auth.GoogleAuth({
     keyFile,
@@ -51,7 +52,55 @@ const getAllNews = async (req, res) => {
         res.status(500).json({ error: 'Internal Server Error' });
     }
 };
+const getAllNewsFeed = async (req, res) => {
+    try {
+        const searchFilter = req.query.searchFilter || '';
 
+
+        const query = {
+            $or: [
+                { title: { $regex: searchFilter, $options: 'i' } },
+                { content: { $regex: searchFilter, $options: 'i' } },
+                { author: { $regex: searchFilter, $options: 'i' } },
+            ],
+        };
+
+        // Check if page and limit are not provided, and if so, don't use pagination
+
+        const news = await newsModel.find(query).sort({ _id: -1 }).exec();
+        // Create the RSS feed manually
+        const feedItems = news.map((entry) => {
+            return `
+                <item>
+                    <title><![CDATA[${entry.title}]]></title>
+                    <description><![CDATA[${entry.description}]]></description>
+                    <link>https://yourwebsite.com/news/${entry._id}</link>
+                    <guid isPermaLink="false">${entry._id}</guid>
+                    <pubDate>${entry.createdAt}</pubDate>
+                </item>
+            `;
+        });
+
+        const rssFeed = `
+            <?xml version="1.0" encoding="UTF-8" ?>
+            <rss version="2.0">
+                <channel>
+                    <title>Your News Feed</title>
+                    <description>Latest news articles</description>
+                    <link>https://yourwebsite.com</link>
+                    ${feedItems.join('')}
+                </channel>
+            </rss>
+        `;
+
+        res.set('Content-Type', 'application/rss+xml');
+        res.send(rssFeed);
+
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+};
 
 const createNews = async (req, res) => {
     try {
@@ -124,4 +173,4 @@ const getNewsById = async (req, res) => {
     }
 };
 
-module.exports = { getAllNews, createNews, getNewsById };
+module.exports = { getAllNews, createNews, getNewsById, getAllNewsFeed };

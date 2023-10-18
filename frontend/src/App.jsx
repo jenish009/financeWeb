@@ -9,6 +9,7 @@ import ContactUs from "./pages/ContactUs";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import Header from "../src/components/Header";
 import Footer from "../src/components/Footer";
+import Feed from "../src/components/Feed";
 
 const App = () => {
   return (
@@ -22,6 +23,8 @@ const App = () => {
           <Route path="/about" component={AboutUs} />
           <Route path="/contactUs" component={ContactUs} />
           <Route path="/privacyPolicy" component={PrivacyPolicy} />
+          <Route path="/feed" component={Feed} />
+
           <Redirect to="/" />
         </Switch>
       </Suspense>

@@ -6,6 +6,7 @@ router
     .post("/createNews", newsController.createNews)
     .get("/getAllNews", newsController.getAllNews)
     .get("/getNewsById", newsController.getNewsById)
+    .get("/getAllNewsFeed", newsController.getAllNewsFeed)
 
 
 

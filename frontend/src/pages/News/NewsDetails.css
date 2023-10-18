@@ -101,7 +101,7 @@
 
 /* Thumbnail image styles */
 .news-thumbnail {
-  max-width: 100%;
+  max-width: 60%;
   display: block;
   margin: 0 auto;
   border-radius: 8px;

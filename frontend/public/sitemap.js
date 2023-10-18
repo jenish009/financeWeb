@@ -43,8 +43,8 @@ async function createNewSiteMap() {
             fetchData(apiUrlBlog)
         ]);
 
-        const newsLinks = newsData.map(obj => `https://www.financialhub.info/${obj.title.toLowerCase().replace(/\s+/g, "-")}/${obj._id}`);
-        const blogLinks = blogData.map(obj => `https://www.financialhub.info/${obj.title.toLowerCase().replace(/\s+/g, "-")}/${obj._id}`);
+        const newsLinks = newsData.map(obj => `https://www.financialhub.info/news/${obj.title.toLowerCase().replace(/\s+/g, "-")}/${obj._id}`);
+        const blogLinks = blogData.map(obj => `https://www.financialhub.info/blog/${obj.title.toLowerCase().replace(/\s+/g, "-")}/${obj._id}`);
 
         sitemap.push(...newsLinks, ...blogLinks);
 
