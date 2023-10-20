@@ -27,9 +27,9 @@ const NewsItem = ({ news }) => {
 
                   <div>
                     <Link
-                      to={`/news/${newsObj.title
-                        .toLowerCase()
-                        .replace(/\s+/g, "-")}/${newsObj._id}`}
+                      to={`/news/${encodeURIComponent(
+                        newsObj.title.toLowerCase().replace(/\s+/g, "-")
+                      )}/${newsObj._id}`}
                       className="newsItem-link" // Maintain the existing class name
                     >
                       Read more

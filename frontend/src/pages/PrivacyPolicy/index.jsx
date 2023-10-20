@@ -1,6 +1,6 @@
 import React from "react";
 import "./PrivacyPolicy.css"; // Include your updated CSS file
-import { Helmet } from "react-helmet-async";
+import { Helmet } from "react-helmet";
 const currentURL = window.location.href;
 
 const PrivacyPolicy = () => {

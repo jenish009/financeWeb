@@ -1,6 +1,6 @@
 import React from "react";
 import "./AboutUs.css"; // Import the CSS for this page
-import { Helmet } from "react-helmet-async";
+import { Helmet } from "react-helmet";
 
 const currentURL = window.location.href;
 const AboutUs = () => (

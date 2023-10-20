@@ -5,7 +5,7 @@ import EmptyList from "../../components/common/EmptyList";
 import "./NewsDetails.css";
 import axios from "axios";
 import { BeatLoader } from "react-spinners";
-import { Helmet } from "react-helmet-async"; // Import Helmet for managing meta tags
+import { Helmet } from "react-helmet"; // Import Helmet for managing meta tags
 import { Link } from "react-router-dom";
 
 const NewsDetails = () => {

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./ContactForm.css"; // Import the CSS file
-import { Helmet } from "react-helmet-async";
+import { Helmet } from "react-helmet";
 
 function ContactForm() {
   const [formData, setFormData] = useState({

@@ -6,7 +6,7 @@ import "./styles.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { BeatLoader } from "react-spinners";
-import { Helmet } from "react-helmet-async";
+import { Helmet } from "react-helmet";
 
 const Blog = () => {
   const { id } = useParams();
@@ -33,12 +33,16 @@ const Blog = () => {
       {blog && (
         <>
           <Helmet>
+            <title>
+              {blog && `${blog.title} FinancialHub.info`.slice(0, 65)}
+            </title>
             <meta
               name="title"
               content={`${blog.title} FinancialHub.info`.slice(0, 65)}
             />
             <meta name="description" content={blog.description.slice(0, 165)} />
-            <meta name="keywords" content={blog.subCategory.join(",")} />
+            <meta property="og:type" content="website" />
+            <meta property="og:url" content={currentURL} />
             <meta
               property="og:title"
               content={`${blog.title} FinancialHub.info`.slice(0, 65)}
@@ -48,8 +52,8 @@ const Blog = () => {
               content={blog.description.slice(0, 165)}
             />
             <meta property="og:image" content={blog.cover} />
-            <meta property="og:url" content={currentURL} />
             <meta name="twitter:card" content={blog.cover} />
+            <meta property="twitter:url" content={currentURL} />
             <meta
               property="twitter:title"
               content={`${blog.title} FinancialHub.info`.slice(0, 65)}
@@ -59,11 +63,8 @@ const Blog = () => {
               content={blog.description.slice(0, 165)}
             />
             <meta name="twitter:image" content={blog.cover} />
-            <meta name="twitter:site" content={currentURL} />
+            <meta name="keywords" content={blog.subCategory.join(",")} />
             <link rel="canonical" href={currentURL} />
-            <title>
-              {blog && `${blog.title} FinancialHub.info`.slice(0, 65)}
-            </title>{" "}
           </Helmet>
         </>
       )}

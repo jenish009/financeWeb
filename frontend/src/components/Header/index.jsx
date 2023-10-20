@@ -14,10 +14,6 @@ const Header = () => {
     setSubscribeMessage(""); // Reset the message
   };
 
-  const handleReadMore = () => {
-    setIsSubscribed(false);
-  };
-
   const callApi = () => {
     if (email) {
       fetch(`${process.env.REACT_APP_BACKEND_URL}/subscribe`, {

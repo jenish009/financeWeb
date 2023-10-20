@@ -6,7 +6,7 @@ import axios from "axios";
 import { BeatLoader } from "react-spinners";
 import "./styles.css";
 import NewsList from "../../components/newsList";
-import { Helmet } from "react-helmet-async";
+import { Helmet } from "react-helmet";
 
 const Home = () => {
   const [data, setData] = useState({ news: [], blogs: [] });
@@ -16,7 +16,7 @@ const Home = () => {
   const [totalPages, setTotalPages] = useState(1);
   const [mode, setMode] = useState("news");
 
-  const blogsPerPage = 9;
+  const blogsPerPage = 16;
 
   useEffect(() => {
     let debounceTimeout;

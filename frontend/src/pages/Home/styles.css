@@ -83,7 +83,6 @@
   margin-bottom: 20px; /* Add space between pagination and footer */
 }
 
-/* Pagination buttons */
 .pagination button {
   background-color: #007bff;
   color: white;
@@ -95,18 +94,19 @@
   transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-/* Active page button */
 .pagination button.active {
-  background-color: #0056b3;
+  background-color: #e4b943; /* Change to your preferred color */
 }
 
-/* Hover effect */
 .pagination button:hover {
   background-color: #0056b3;
   transform: scale(1.1); /* Enlarges button on hover */
 }
 
-/* Disabled page button */
+button.active-round-button {
+  background-color: #0056b3;
+}
+
 .pagination button:disabled {
   background-color: #ddd;
   color: #777;
@@ -114,9 +114,6 @@
 }
 
 @media (max-width: 768px) {
-  /* Adjust styles for smaller screens here */
-
-  /* Example: Reduce the size of round buttons and pagination buttons */
   .round-button {
     width: 50px;
     height: 50px;
