@@ -1,12 +1,15 @@
+"use client";
+
 import React, { useState, useEffect } from "react";
-import EmptyList from "../../components/common/EmptyList";
-import BlogList from "../../components/Home/BlogList";
-import SearchBar from "../../components/Home/SearchBar";
+import EmptyList from "@/components/common/EmptyList";
+import BlogList from "@/components/Home/BlogList";
+import SearchBar from "@/components/Home/SearchBar";
 import axios from "axios";
 import { BeatLoader } from "react-spinners";
 import "./styles.css";
-import NewsList from "../../components/newsList";
+import NewsList from "@/components/newsList";
 import { Helmet } from "react-helmet";
+import Header from "@/components/Header";
 
 const Home = () => {
   const [data, setData] = useState({ news: [], blogs: [] });
@@ -15,7 +18,6 @@ const Home = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [mode, setMode] = useState("news");
-  const currentURL = window.location.href;
 
   const blogsPerPage = 16;
 
@@ -28,8 +30,8 @@ const Home = () => {
 
       const apiUrl =
         mode === "news"
-          ? `${process.env.REACT_APP_BACKEND_URL}/news/getAllNews`
-          : `${process.env.REACT_APP_BACKEND_URL}/post/getPosts`;
+          ? `http://localhost:5000/news/getAllNews`
+          : `http://localhost:5000/post/getPosts`;
 
       axios
         .get(
@@ -130,7 +132,7 @@ const Home = () => {
         />
         <meta name="twitter:image" content="%PUBLIC_URL%/author.jpg" />
         <meta name="twitter:site" content="%PUBLIC_URL%" />
-        <link rel="canonical" href={currentURL} />
+        <link rel="canonical" href="" />
         <title>
           Your Daily Source for Financial News, Insights, and Advice
         </title>

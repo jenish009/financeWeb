@@ -1,0 +1,56 @@
+/* AboutUs.css */
+
+/* Styles for the About Us page container */
+.about-us {
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin: 100px 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Additional styling for the page content */
+h1 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+li {
+  margin-bottom: 10px;
+}
+h2 {
+  font-size: 24px;
+  margin: 10px 0px;
+}
+p {
+  font-size: 16px;
+  line-height: 2;
+  margin-bottom: 20px;
+}
+
+/* Media query for mobile responsiveness */
+@media (max-width: 768px) {
+  .about-us {
+    margin: 40px 10px;
+    padding: 10px;
+  }
+
+  .back-button {
+    top: 10px;
+    left: 10px;
+  }
+
+  h1 {
+    font-size: 20px;
+  }
+
+  p {
+    font-size: 14px;
+    margin-bottom: 15px;
+  }
+  li {
+    font-size: 14px;
+    margin-bottom: 15px;
+    line-height: 1.6;
+  }
+}

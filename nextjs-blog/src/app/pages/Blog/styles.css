@@ -1,0 +1,153 @@
+/* Common styles for blog container */
+.blog-wrap {
+  max-width: 100%;
+  margin-top: 15px;
+  padding: 20px;
+  background-color: #f7f7f7;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.blog-goBack {
+  text-decoration: none;
+  font-size: 0.8rem;
+  color: #a9a9a9;
+  font-weight: 500;
+  display: block;
+}
+
+/* Header styles */
+.blog-wrap header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.blog-date {
+  font-size: 0.8rem;
+  color: #a9a9a9;
+  font-weight: 500;
+}
+
+/* Description and Content styles */
+
+.blog-content {
+  line-height: 2; /* Adjust line height for better readability */
+  margin-top: 1.5rem;
+  padding: 20px;
+  background-color: #f9f9f9; /* Lighter background color */
+  border: 1px solid #ddd; /* Add a subtle border */
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* My csss */
+.blog-desc-p {
+  font-size: 1.2rem;
+  line-height: 2; /* Adjust line height for better readability */
+  margin-top: 1.5rem;
+  padding: 20px;
+  background-color: #f9f9f9; /* Lighter background color */
+  border: 1px solid #ddd; /* Add a subtle border */
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+.blog-content-p {
+  font-size: 1.2rem;
+  text-align: left;
+  line-height: 1.7;
+}
+
+.blog-content-h2 {
+  font-size: 1.5rem; /* Adjust the font size to your preference */
+  color: #333; /* Text color */
+  margin-top: 1.5rem; /* Top margin to create spacing below previous content */
+  margin-bottom: 1rem; /* Bottom margin for separation */
+  font-weight: bold; /* Bold font weight, you can adjust as needed */
+  text-decoration: underline;
+  text-align: center;
+}
+.blog-content-h3 {
+  font-size: 1.3rem; /* Adjust the font size to your preference */
+  color: #333; /* Text color */
+  margin-top: 1.3rem; /* Top margin to create spacing below previous content */
+  margin-bottom: 1rem; /* Bottom margin for separation */
+  font-weight: bold; /* Bold font weight, you can adjust as needed */
+  text-align: left;
+}
+.blog-content-img {
+  width: 70%;
+  border-radius: 10px;
+}
+/* Image styles with improved alignment */
+.blog-thumbnail {
+  max-width: 100%;
+  display: block; /* Remove any extra space below the image */
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  margin: 0px auto;
+}
+
+/* Blog subCategory styles */
+.blog-subCategory {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.blog-subCategory > div {
+  margin: 0 10px;
+}
+
+.author-logo {
+  width: 40px; /* Set the desired width */
+  height: 40px; /* Set the desired height */
+  border-radius: 50%; /* Make it a circular image */
+  object-fit: cover; /* Maintain aspect ratio and cover the entire container */
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2); /* Add shadow effect */
+  margin-top: 1rem; /* Adjust the margin as needed */
+}
+
+/* Media Query for Mobile Devices */
+@media screen and (max-width: 768px) {
+  .blog-desc-p {
+    font-size: 15px;
+  }
+  .blog-content-p {
+    font-size: 0.9rem;
+    text-align: left;
+    line-height: 1.7;
+  }
+
+  .blog-content-h3 {
+    font-size: 1.1rem; /* Adjust the font size to your preference */
+  }
+  .blog-content-h2 {
+    font-size: 1.4rem; /* Adjust the font size to your preference */
+    text-align: center;
+  }
+  .blog-wrap {
+    max-width: 100%; /* Make the container full width on smaller screens */
+    padding: 10px; /* Reduce padding for smaller screens */
+  }
+  .blog-goBack {
+    font-size: 1rem; /* Adjust font size as needed */
+    margin: 1rem;
+  }
+  .blog-desc,
+  .blog-content {
+    font-size: 1rem; /* Adjust font size for smaller screens */
+    padding: 10px; /* Reduce padding for smaller screens */
+  }
+
+  .blog-thumbnail {
+    margin-top: 1rem; /* Adjust margin for smaller screens */
+  }
+  .blog-subCategory {
+    flex-wrap: wrap; /* Allow items to wrap to the next line on smaller screens */
+    justify-content: flex-start; /* Align items to the left on smaller screens */
+    display: flex;
+    margin-top: 1.5rem;
+  }
+
+  /* Add more responsive styles as needed */
+}

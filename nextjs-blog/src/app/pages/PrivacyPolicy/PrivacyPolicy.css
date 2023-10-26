@@ -1,0 +1,67 @@
+/* PrivacyPolicy.css */
+
+/* Styles for the Privacy Policy page container */
+.privacy-policy-container {
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin: 100px 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Additional styling for the page content */
+.privacy-policy-title {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.privacy-policy-description {
+  font-size: 16px;
+  line-height: 2;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.privacy-policy-section-title {
+  font-size: 24px;
+  margin: 10px 0;
+  color: #333;
+}
+
+.privacy-policy-section-description {
+  font-size: 16px;
+  line-height: 2;
+  margin: 10px 0;
+  color: #333;
+}
+
+/* Media query for mobile responsiveness */
+@media (max-width: 768px) {
+  .privacy-h2 {
+    font-size: 17px;
+  }
+  .privacy-policy-container {
+    margin: 40px 10px;
+    padding: 10px;
+  }
+
+  .privacy-policy-title {
+    font-size: 17px;
+  }
+
+  .privacy-policy-description {
+    font-size: 14px;
+    margin-bottom: 15px;
+  }
+
+  .privacy-policy-section-title {
+    font-size: 20px;
+  }
+
+  .privacy-policy-section-description {
+    font-size: 14px;
+    margin: 10px 0;
+  }
+}

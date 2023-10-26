@@ -1,0 +1,182 @@
+/* NewsPage.css */
+
+/* Common styles for news container */
+.news-wrap {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f7f7f7;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* "Go Back" link styles */
+.news-goBack {
+  text-decoration: none;
+  font-size: 0.8rem;
+  color: #8a8787;
+  font-weight: 500;
+  margin: 1rem;
+  display: block;
+}
+
+/* Header styles */
+.news-wrap header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.news-description {
+  font-size: 1.2rem;
+  line-height: 2; /* Adjust line height for better readability */
+  margin-top: 1.5rem;
+  padding: 20px;
+  background-color: #f9f9f9; /* Lighter background color */
+  border: 1px solid #ddd; /* Add a subtle border */
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+/* Date styles */
+.news-date {
+  font-size: 0.8rem;
+  color: #a9a9a9;
+  font-weight: 500;
+  text-align: center;
+}
+
+/* Description and Content styles */
+.news-content {
+  line-height: 2;
+  margin: 1.5rem 0px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Description paragraph styles */
+.news-desc-p {
+  font-size: 1.2rem;
+  line-height: 2;
+  margin-top: 1.5rem;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Content paragraph styles */
+.news-content-p {
+  font-size: 1.2rem;
+  text-align: left;
+  line-height: 1.7;
+}
+
+/* Content heading styles */
+.news-content-h2 {
+  font-size: 1.5rem;
+  color: #333;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+/* Content heading styles */
+.news-content-h3 {
+  font-size: 1.3rem;
+  color: #333;
+  margin-top: 1.3rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
+  text-align: left;
+}
+
+/* Content image styles */
+.news-content-img {
+  width: 70%;
+  border-radius: 10px;
+}
+
+/* Thumbnail image styles */
+.news-thumbnail {
+  max-width: 60%;
+  display: block;
+  margin: 0 auto;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  margin-top: 1.5rem;
+}
+
+/* Subcategory styles */
+.news-subCategory {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+/* Individual subcategory chip styles */
+.news-subCategory > div {
+  margin: 0 10px;
+}
+
+/* Author info styles */
+.author-logo {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+}
+
+.author-name {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  /* Adjust styles for smaller screens (e.g., mobile phones) here */
+
+  /* Example: Reduce padding and font sizes for better mobile display */
+  .news-wrap {
+    padding: 10px; /* Adjust padding as needed */
+  }
+
+  .news-description,
+  .news-content,
+  .news-desc-p,
+  .news-content-p,
+  .news-content-h2,
+  .news-content-h3 {
+    font-size: 1rem; /* Adjust font size as needed */
+    padding: 10px; /* Adjust padding as needed */
+    margin: 1rem 0; /* Adjust margins as needed */
+  }
+
+  /* Example: Reduce image width for better mobile display */
+  .news-content-img {
+    width: 100%; /* Adjust width as needed */
+  }
+
+  /* Example: Hide author info on mobile (optional) */
+  .author-info {
+    display: none; /* Hide author info on mobile */
+  }
+
+  /* Example: Adjust the styles of the "Go Back" link */
+  .news-goBack {
+    font-size: 1rem; /* Adjust font size as needed */
+    margin: 1rem;
+  }
+
+  /* Example: Adjust styles for subcategories (optional) */
+  .news-subCategory {
+    flex-direction: column; /* Display subcategories vertically */
+    align-items: center;
+  }
+
+  .news-subCategory > div {
+    margin: 5px 0; /* Adjust spacing between subcategories */
+  }
+}
